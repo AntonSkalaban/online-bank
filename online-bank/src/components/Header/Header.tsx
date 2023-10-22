@@ -1,5 +1,10 @@
-import React from "react"
+import React from "react";
+import { Nav } from "./Nav/Nav";
 
 export const Header = () => {
-    return <></>
-}
+  return (
+    <header className="header">
+      <Nav />
+    </header>
+  );
+};

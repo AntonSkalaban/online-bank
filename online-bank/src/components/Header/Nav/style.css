@@ -1,0 +1,41 @@
+
+.nav {
+    display: flex;
+}
+
+.nav__item {
+    display: flex;
+    padding: 20px 10px 24px;
+   
+    position: relative;
+    overflow: hidden;
+}
+
+.nav__link {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color:  #6c757d;
+   
+    transition: color 0.3s;
+}
+
+.nav__link_active {
+    color:  black;
+}
+
+.nav__link_active::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -3px;
+    left: 0;
+    height: 6px;
+    background-color: green;
+    border-radius: 6px;
+
+  
+}
+
