@@ -1,0 +1,45 @@
+
+.main__section {
+    margin-top: 32px;
+}
+
+.section__header {
+    margin-bottom: 12px;
+}
+
+.section__title{
+    font-size: 28px;
+    font-family: SBSansDisplay, SBSans, Arial, Helvetica, sans-serif;
+    line-height: 36px;
+    letter-spacing: -0.3px;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 600;
+    color: rgb(38, 38, 38);
+}
+
+.products__dropdowns-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 17px;
+}
+
+.products__show-all {
+    width: fit-content;
+    font-family: SBSans, Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: rgb(13, 133, 35);
+
+    border-bottom-style: dashed;
+    border-bottom-color: rgb(13, 133, 35);
+
+    cursor: pointer;
+
+    margin-top: 17px;
+}
