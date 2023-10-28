@@ -3,14 +3,18 @@ import Checkmark from "assets/svg/checkmark.svg";
 import Plus from "assets/svg/plus.svg";
 import "./style.css";
 import { Card, Credit } from "type/type";
+import { productAPI } from "services/api";
 
 interface DropdownProps {
-  title: string;
-  data: Card[] | Credit[];
+  name: string;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ title, data }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Dropdown: React.FC<DropdownProps> = ({ name }) => {
+  const [isOpen, setIsOpen] = useState(name === "Cards");
+
+  const { data, isFetching } = productAPI.useGetProductsQuery(
+    name.toLowerCase()
+  );
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
@@ -20,7 +24,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, data }) => {
     <div className="dropdown">
       <div className="dropdown__header">
         <div className="dropdown__toggle" onClick={toggle}>
-          <h3 className="dropdown__title">{title}</h3>{" "}
+          <h3 className="dropdown__title">{name}</h3>{" "}
           <span
             className={
               "dropdown__checkmark " +
@@ -37,7 +41,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, data }) => {
 
       {isOpen && (
         <div className={"dropdown__body"}>
-          {data?.length ? (
+          {!isFetching && data?.length ? (
             <ul className="dropdown__list">
               {data.map((item) => {
                 return (
@@ -48,11 +52,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, data }) => {
                         <p className="item__balance">
                           {item.balance} {item.currency}
                         </p>
-                        {title === "Credits" && <p>{(item as Credit).rate}%</p>}
+                        {name === "Credits" && <p>{(item as Credit).rate}%</p>}
                       </div>
                       <div className="item__bottom-row item-row">
                         <p>{item.name}</p>
-                        {title === "Cards" && (
+                        {name === "Cards" && (
                           <p>
                             &bull;&bull;
                             {(item as Card).number.toString().slice(-4)}
