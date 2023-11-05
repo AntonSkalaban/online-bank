@@ -3,22 +3,6 @@
     margin-top: 32px;
 }
 
-.section__header {
-    margin-bottom: 12px;
-}
-
-.section__title{
-    font-size: 28px;
-    font-family: SBSansDisplay, SBSans, Arial, Helvetica, sans-serif;
-    line-height: 36px;
-    letter-spacing: -0.3px;
-    text-align: left;
-    margin: 0px;
-    padding: 0px;
-    font-weight: 600;
-    color: rgb(38, 38, 38);
-}
-
 .products__dropdowns-list{
     display: flex;
     flex-direction: column;

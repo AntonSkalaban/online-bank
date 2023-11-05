@@ -1,0 +1,30 @@
+.card-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+
+    margin-top: 10px;
+}
+
+.avaliable-card {
+    height: 60px;
+    display: flex;
+    align-items: top;
+    gap: 20px;
+}
+
+.avalivle-card__img-container {
+    width: 81px;
+    height: 50px;
+}
+
+.avaliable-card__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.avaliable-card__subtitle {
+    font-size: 14px;
+    line-height: 1.14;
+    color: rgba(27,39,51,.7);
+}

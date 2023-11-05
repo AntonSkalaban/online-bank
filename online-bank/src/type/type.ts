@@ -1,15 +1,21 @@
-export interface Card {
+export interface DefaultCard {
   paymentSystem: "Visa" | "Mastercard";
   name: string;
-  date: Date;
   period: number;
   currency: "USD" | "EUR";
+  isVirtual: boolean;
+}
+
+export interface UserCard extends DefaultCard {
+  _id: string;
+  date: Date;
   balance: number;
-  number: number;
-  cvv: number;
+  number: string;
+  cvv: string;
 }
 
 export interface Credit {
+  _id: string;
   name: string;
   date: Date;
   period: number;

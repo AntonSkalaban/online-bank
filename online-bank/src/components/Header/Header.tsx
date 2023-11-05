@@ -1,8 +1,8 @@
 import React from "react";
 import { Nav } from "./Nav/Nav";
 import Logo from "assets/svg/logo.svg";
-import "./style.css";
 import { Wrapper } from "components/UI";
+import "./style.css";
 
 export const Header = () => {
   return (

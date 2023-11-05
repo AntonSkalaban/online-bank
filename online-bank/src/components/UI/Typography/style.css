@@ -1,0 +1,19 @@
+.typography{
+    font-size: 14px;
+    line-height: 1.43;
+   
+    margin: 7px 0;
+}
+
+.typography_grey {
+    color: rgba(27,39,51,.7);
+}
+
+.typography_green {
+    color: #11bf6a;
+}
+
+.typography_red {
+    color: red;
+}
+
