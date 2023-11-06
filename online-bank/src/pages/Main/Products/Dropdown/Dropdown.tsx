@@ -1,21 +1,22 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { productAPI } from "services/api";
+import { ProdyctType } from "type";
+import { ProductsList } from "./ProductsList/ProductsList";
+import { Typography } from "components/UI";
 import Checkmark from "assets/svg/checkmark.svg";
 import Plus from "assets/svg/plus.svg";
 import "./style.css";
-import { Credit, UserCard } from "type/type";
-import { productAPI } from "services/api";
-import { NavLink } from "react-router-dom";
-import { getCardPircture } from "helpers";
 
 interface DropdownProps {
   name: string;
-  type: "credits" | "cards" | "deposits";
+  type: ProdyctType;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({ name, type }) => {
   const [isOpen, setIsOpen] = useState(type === "cards");
 
-  const { data, isFetching } = productAPI.useGetProductsQuery(type);
+  const { data: products, isFetching } = productAPI.useGetProductsQuery(type);
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
@@ -44,48 +45,15 @@ export const Dropdown: React.FC<DropdownProps> = ({ name, type }) => {
 
       {isOpen && (
         <div className={"dropdown__body"}>
-          {!isFetching && data?.length ? (
-            <ul className="dropdown__list">
-              {data.map((item) => {
-                return (
-                  <li className="dropdown__item" key={item._id}>
-                    <div className="item__img">
-                      {type === "cards" && (
-                        <div
-                          className={`card-img ${getCardPircture(
-                            (item as UserCard).isVirtual,
-                            (item as UserCard).paymentSystem
-                          )}`}
-                        ></div>
-                      )}
-                    </div>
-                    <div className="item__info">
-                      <div className="item__top-row item-row">
-                        <p className="item__balance">
-                          {item.balance} {item.currency}
-                        </p>
-                        {type === "credits" && <p>{(item as Credit).rate}%</p>}
-                      </div>
-                      <div className="item__bottom-row item-row">
-                        <p>{item.name}</p>
-                        {type === "cards" && (
-                          <p>
-                            &bull;&bull;
-                            {(item as UserCard).number.toString().slice(-4)}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+          {!isFetching && products?.length ? (
+            <ProductsList products={products} productType={type} />
           ) : (
             <div className="dropdown__empty-contaner">
-              <p className="dropdown__empty-text">
-                You don&apos;t have a registered product yet
-              </p>
-              <a className="dropdown__empty-link">More details</a>
+              <Typography text="You don't have a registered product yet" />
+
+              <Typography color="green">
+                <a className="dropdown__empty-link">More details</a>
+              </Typography>
             </div>
           )}
         </div>

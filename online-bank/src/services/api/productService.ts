@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { createProduct, getRandomNumber } from "helpers";
-import { Credit, UserCard, DefaultCard } from "type/type";
+import { createProduct } from "helpers";
+import { UserCredit, UserCard, DefaultCard, ProdyctType } from "type";
 
 export const productAPI = createApi({
   reducerPath: "productAPI",
@@ -9,18 +9,15 @@ export const productAPI = createApi({
     baseUrl: import.meta.env.VITE_API_URL + "/products",
   }),
   endpoints: (build) => ({
-    getProducts: build.query<
-      UserCard[] | Credit[],
-      "credits" | "cards" | "deposits"
-    >({
+    getProducts: build.query<UserCard[] | UserCredit[], ProdyctType>({
       query: (productType) => "/" + productType,
       providesTags: (_result, _error, arg) => [arg],
     }),
     addProducts: build.mutation<
-      UserCard | Credit,
+      UserCard | UserCredit,
       {
-        productType: "credits" | "cards" | "deposits";
-        body: DefaultCard | Credit;
+        productType: ProdyctType;
+        body: DefaultCard | UserCredit;
       }
     >({
       query: ({ productType, body }) => ({

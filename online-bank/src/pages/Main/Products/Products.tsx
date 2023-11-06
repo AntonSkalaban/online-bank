@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { products } from "./const";
 import { SectionHeader } from "components/UI";
 import { Dropdown } from "./Dropdown/Dropdown";
 import "./style.css";
@@ -10,17 +11,11 @@ export const Products = () => {
     setShowAll((prev) => !prev);
   };
 
-  const data: { name: string; type: "cards" | "credits" | "deposits" }[] = [
-    { name: "Cards", type: "cards" },
-    { name: "Credits", type: "credits" },
-    { name: "Deposits", type: "deposits" },
-  ];
-
   return (
     <section className="main__section products">
       <SectionHeader title="Products" />
       <div className="products__dropdowns-list">
-        {data.map(({ name, type }, index) => {
+        {products.map(({ name, type }, index) => {
           if (showAll) {
             return <Dropdown key={name} name={name} type={type} />;
           }

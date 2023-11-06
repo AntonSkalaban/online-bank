@@ -1,16 +1,16 @@
-import { DefaultCard, Credit } from "type/type";
-import { getRandomNumber } from "./getRandomNumber";
+import { DefaultCard, UserCredit } from "type";
+import { ProductNumber } from "./ProductNumber";
 
 export const createProduct = (
   productType: "credits" | "cards" | "deposits",
-  body: DefaultCard | Credit
+  body: DefaultCard | UserCredit
 ) => {
   if (productType === "cards")
     return {
       ...body,
       date: new Date(),
-      number: getRandomNumber(9),
-      cvv: getRandomNumber(3),
+      number: ProductNumber.getRandomNumber(9),
+      cvv: ProductNumber.getRandomNumber(3),
       balance: 0,
     };
 };

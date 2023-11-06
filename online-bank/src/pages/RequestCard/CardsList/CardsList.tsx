@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getCardParams } from "store/selectors";
 import { productAPI } from "services/api";
 import { getAvaliableCards, getCardPircture } from "helpers";
-import { DefaultCard } from "type/type";
+import { DefaultCard } from "type";
 import { Button } from "components/UI";
 import "./style.css";
 
@@ -23,7 +23,8 @@ export const CardsList: React.FC<CardsListProps> = ({ isConfirm }) => {
   return (
     <div className="cards-list">
       <h3 className="cards-list__title">
-        Вам подходят карты {avaliableCards.length}
+        {avaliableCards.length} {avaliableCards.length > 1 ? "cards" : "card"}{" "}
+        suit you
       </h3>
       {avaliableCards.map((card) => {
         const { name, paymentSystem, isVirtual, currency, period } = card;

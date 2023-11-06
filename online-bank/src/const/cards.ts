@@ -1,4 +1,4 @@
-import { DefaultCard } from "type/type";
+import { DefaultCard } from "type";
 
 export const cards: DefaultCard[] = [
   {

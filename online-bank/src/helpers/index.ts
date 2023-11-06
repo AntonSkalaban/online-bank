@@ -1,4 +1,4 @@
 export * from "./getCardPicture";
-export * from "./getRandomNumber";
+export * from "./ProductNumber";
 export * from "./getAvaliableCard";
 export * from "./createProduct";
