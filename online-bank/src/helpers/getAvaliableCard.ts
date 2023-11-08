@@ -1,4 +1,4 @@
-import { DefaultCard } from "type/type";
+import { DefaultCard } from "type";
 import { cards } from "const/cards";
 
 export const getAvaliableCards = (filteredParams: DefaultCard) => {

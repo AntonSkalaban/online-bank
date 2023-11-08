@@ -9,7 +9,7 @@ export const createProduct = (
     return {
       ...body,
       date: new Date(),
-      number: ProductNumber.getRandomNumber(9),
+      number: ProductNumber.getRandomNumber(12),
       cvv: ProductNumber.getRandomNumber(3),
       balance: 0,
     };

@@ -13,6 +13,15 @@ export const productAPI = createApi({
       query: (productType) => "/" + productType,
       providesTags: (_result, _error, arg) => [arg],
     }),
+    getProduct: build.query<
+      UserCard | UserCredit,
+      {
+        productType: string;
+        id: string;
+      }
+    >({
+      query: ({ productType, id }) => "/" + productType + "/" + id,
+    }),
     addProducts: build.mutation<
       UserCard | UserCredit,
       {

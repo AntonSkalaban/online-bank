@@ -1,11 +1,12 @@
 import React from "react";
+import { btns } from "./const";
+import { CardButtonsList } from "components/CardButtonsList/CardButtonsList";
 import "./style.css";
-import { CardButtonList } from "components/CardButtonList/CardButtonList";
 
 export const Services = () => {
   return (
     <section className="services section_gray">
-      <CardButtonList />
+      <CardButtonsList btns={btns} />
     </section>
   );
 };

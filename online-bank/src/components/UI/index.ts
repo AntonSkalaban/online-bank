@@ -3,3 +3,4 @@ export * from "./SectionHeader/SectionHeader";
 export * from "./Typography/Typography";
 export * from "./Button/Button";
 export * from "./GoBackArrow/GoBackArrow";
+export * from "./LoadingSpinner/LoadingSpinner";

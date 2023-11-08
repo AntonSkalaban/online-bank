@@ -5,7 +5,8 @@ interface TypographyProps {
   tag?: "p" | "span";
   text?: string;
   children?: ReactNode;
-  color?: "grey" | "green" | "red";
+  color?: "grey" | "green" | "red" | "white";
+  weight?: "normal" | "strong";
 }
 
 export const Typography = ({
@@ -13,10 +14,15 @@ export const Typography = ({
   text,
   children,
   color = "grey",
+  weight = "normal",
 }: TypographyProps) => {
   return tag === "p" ? (
-    <p className={`typography typography_${color}`}>{text ?? children}</p>
+    <p className={`typography typography_${color} typography_${weight}`}>
+      {text ?? children}
+    </p>
   ) : (
-    <span className={`typography typography_${color}`}>{text ?? children}</span>
+    <span className={`typography typography_${color} typography_${weight}`}>
+      {text ?? children}
+    </span>
   );
 };

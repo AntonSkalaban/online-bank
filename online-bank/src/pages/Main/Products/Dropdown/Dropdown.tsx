@@ -36,7 +36,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ name, type }) => {
             <img src={Checkmark} />
           </span>
         </div>
-        <NavLink to={"/request-" + type}>
+        <NavLink to={"/request/" + type}>
           <span className="dropdown__plus-contaiener">
             <img src={Plus} />
           </span>

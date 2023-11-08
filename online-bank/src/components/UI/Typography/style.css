@@ -5,6 +5,9 @@
     margin: 7px 0; */
 }
 
+.typography_strong {
+    font-weight: 600;
+}
 .typography_grey {
     color: rgba(27,39,51,.7);
 }
@@ -15,5 +18,9 @@
 
 .typography_red {
     color: red;
+}
+
+.typography_white {
+    color: white;
 }
 

@@ -1,8 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { UserCredit, UserCard, ProdyctType, UserDeposit } from "type";
-import { CreditsList } from "./CreditsList";
-import { CardsList } from "./CardsList";
-import { DepositsList } from "./DepositsList";
+import { Card, Credit, Deposit } from "./ProductsItems";
 import "./style.css";
 
 interface ProductsListProps {
@@ -10,15 +9,29 @@ interface ProductsListProps {
   productType: ProdyctType;
 }
 
+const components = {
+  cards: (product: UserCard) => <Card card={product} />,
+  credits: (product: UserCredit) => <Credit credit={product} />,
+  deposits: (product: UserDeposit) => <Deposit deposit={product} />,
+};
+
 export const ProductsList: React.FC<ProductsListProps> = ({
   products,
   productType,
 }) => {
-  const components = {
-    cards: <CardsList cards={products as UserCard[]} />,
-    credits: <CreditsList credits={products as UserCredit[]} />,
-    deposits: <DepositsList deposits={products as UserDeposit[]} />,
-  };
-
-  return <>{components[productType]}</>;
+  return (
+    <ul className="products__list">
+      {" "}
+      {products.map((product) => {
+        return (
+          <li className="products__list-item" key={product._id}>
+            <NavLink to={`products/${productType}/${product._id}`}>
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {components[productType](product as any)}
+            </NavLink>
+          </li>
+        );
+      })}
+    </ul>
+  );
 };
