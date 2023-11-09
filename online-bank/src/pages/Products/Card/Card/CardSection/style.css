@@ -40,6 +40,13 @@
     padding: 7px 0;
     cursor: pointer;
 }
+
+
+.card-info__img-container {
+    width: 20px;
+    height: 20px;
+}
+
 @media (max-width: 665px) {
 
     .card-page__card-container {

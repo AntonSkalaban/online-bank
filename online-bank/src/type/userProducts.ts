@@ -2,7 +2,7 @@ import { DefaultCard, DefaultProduct } from "./defaultProducts";
 
 export interface UserProduct extends DefaultProduct {
   _id: string;
-  date: Date;
+  date: string;
 }
 
 export interface UserCard extends UserProduct, DefaultCard {

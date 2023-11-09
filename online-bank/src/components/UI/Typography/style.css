@@ -1,13 +1,27 @@
 .typography{
-    font-size: 14px;
     line-height: 1.43;
-/*    
-    margin: 7px 0; */
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
 }
 
+.typography_normal {
+    font-size: 14px;
+}
+
+.typography_big {
+    font-size: 16px;
+}
 .typography_strong {
     font-weight: 600;
 }
+
+.typography_red {
+    color: black;
+}
+
 .typography_grey {
     color: rgba(27,39,51,.7);
 }

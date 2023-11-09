@@ -2,27 +2,25 @@ import React, { ReactNode } from "react";
 import "./style.css";
 
 interface TypographyProps {
-  tag?: "p" | "span";
   text?: string;
   children?: ReactNode;
-  color?: "grey" | "green" | "red" | "white";
+  color?: "grey" | "green" | "red" | "white" | "black";
   weight?: "normal" | "strong";
+  size?: "normal" | "big";
 }
 
 export const Typography = ({
-  tag = "p",
   text,
   children,
+  size = "normal",
   color = "grey",
   weight = "normal",
 }: TypographyProps) => {
-  return tag === "p" ? (
-    <p className={`typography typography_${color} typography_${weight}`}>
+  return (
+    <p
+      className={`typography typography_${size} typography_${color} typography_${weight}`}
+    >
       {text ?? children}
     </p>
-  ) : (
-    <span className={`typography typography_${color} typography_${weight}`}>
-      {text ?? children}
-    </span>
   );
 };

@@ -3,8 +3,12 @@ export class ProductNumber {
     return number.slice(-4);
   }
 
-  static hideNumber(number: string) {
-    return number.substring(0, 6) + "******" + number.substring(-4);
+  static showExtremeNumbers(number: string) {
+    return number.substring(0, 4) + "******" + number.slice(-4);
+  }
+
+  static hideAllNumber(number: string) {
+    return number.replace(/./g, "*");
   }
 
   static getRandomNumber(length: number) {

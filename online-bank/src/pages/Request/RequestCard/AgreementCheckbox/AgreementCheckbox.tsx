@@ -19,9 +19,7 @@ export const AgreementCheckbox: React.FC<AgreementCheckboxProps> = ({
       >
         <Typography>
           I hereby agree to the{" "}
-          <Typography tag="span" color="green">
-            Rewards and terms of service
-          </Typography>
+          <Typography color="green">Rewards and terms of service</Typography>
         </Typography>
       </Checkbox>
 
