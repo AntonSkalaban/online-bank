@@ -17,10 +17,8 @@ export const AgreementCheckbox: React.FC<AgreementCheckboxProps> = ({
         isChecked={isChecked}
         selectHandler={handleChanhe}
       >
-        <Typography>
-          I hereby agree to the{" "}
-          <Typography color="green">Rewards and terms of service</Typography>
-        </Typography>
+        <Typography>I hereby agree to the </Typography>
+        <Typography color="green">Rewards and terms of service</Typography>
       </Checkbox>
 
       {!isChecked && (

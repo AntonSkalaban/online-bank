@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { createProduct } from "helpers";
+import { Product } from "helpers";
 import { UserCredit, UserCard, DefaultCard, ProdyctType } from "type";
 
 export const productAPI = createApi({
@@ -32,7 +32,22 @@ export const productAPI = createApi({
       query: ({ productType, body }) => ({
         url: "/" + productType,
         method: "POST",
-        body: createProduct(productType, body),
+        body: Product.create(productType, body),
+      }),
+      invalidatesTags: (_result, _error, arg) => [arg.productType],
+    }),
+    updateProduct: build.mutation<
+      UserCard | UserCredit,
+      {
+        productType: ProdyctType;
+        body: UserCard | UserCredit;
+        newParams: Record<string, string | number>;
+      }
+    >({
+      query: ({ productType, body, newParams }) => ({
+        url: "/" + productType + "/" + body._id,
+        method: "PUT",
+        body: Product.update(body, newParams),
       }),
       invalidatesTags: (_result, _error, arg) => [arg.productType],
     }),

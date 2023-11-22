@@ -1,2 +1,4 @@
-export { default as CardFilterSlice } from "./CardFilterSlice";
-export * from "./CardFilterSlice";
+export { default as DefCardParamsSlice } from "./DefCardParamsSlice";
+export { default as TransferFormSlice } from "./TransferFormSlice";
+export * from "./TransferFormSlice";
+export * from "./DefCardParamsSlice";

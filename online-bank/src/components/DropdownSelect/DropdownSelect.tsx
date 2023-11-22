@@ -1,13 +1,17 @@
 import React, { useRef, useState } from "react";
 import { useOnClickOutside } from "hooks";
+import { UserCard } from "type";
+import { DropdownOption } from "./DropdownOption/DropdownOption";
+import { SelectStringItem } from "./SelectItems/StringItem/StringItem";
+import { SelectCardItem } from "./SelectItems/CardItem/CardItem";
 import Checkmark from "assets/svg/checkmark.svg";
 import "./style.css";
 
 interface DropdownSelectProps {
-  options: string[];
+  options: string[] | UserCard[];
   name: string;
-  checkedValue: string | number;
-  selectHandler: (val: Record<string, string | number | boolean>) => void;
+  checkedValue: string | UserCard;
+  selectHandler: (val: Record<string, string>) => void;
 }
 
 export const DropdownSelect: React.FC<DropdownSelectProps> = ({
@@ -16,25 +20,24 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({
   checkedValue,
   selectHandler,
 }) => {
-  const dropdownRed = useRef(null);
+  const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  useOnClickOutside(dropdownRed, () => setIsOpen(false));
+  useOnClickOutside(dropdownRef, () => setIsOpen(false));
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const hanldeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const target = e.target;
-    selectHandler({ [target.name]: target.value });
-  };
-
   return (
-    <div className="select-dropdown" ref={dropdownRed}>
-      <div className="select-dropdown__header">
+    <div className="select-dropdown" ref={dropdownRef}>
+      <div className="border_grey">
         <div className="select-dropdown__toggle" onClick={toggle}>
-          <p className="select-dropdown__title">{checkedValue}</p>
+          {typeof checkedValue === "string" ? (
+            <SelectStringItem label={checkedValue} />
+          ) : (
+            <SelectCardItem card={checkedValue} />
+          )}
           <span
             className={
               "dropdown__checkmark " +
@@ -49,26 +52,23 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({
         <div className="select-dropdown__body">
           <ul className="select-dropdown__list">
             {options.map((option) => {
-              const isChecked = checkedValue === option;
+              const value = typeof option === "string" ? option : option._id;
+              const isChecked = value === checkedValue;
+
               return (
-                <li
-                  className={`select-dropdown__item ${
-                    isChecked && "select-dropdown__item_checked"
-                  }`}
-                  key={option}
+                <DropdownOption
+                  key={value}
+                  name={name}
+                  value={value}
+                  isChecked={isChecked}
+                  selectHandler={selectHandler}
                 >
-                  <label className="select-dropdown__item-label">
-                    <input
-                      className="list__input"
-                      type="radio"
-                      name={name}
-                      value={option}
-                      checked={isChecked}
-                      onChange={hanldeChange}
-                    />
-                    {option}
-                  </label>
-                </li>
+                  {typeof option === "string" ? (
+                    <SelectStringItem label={value} />
+                  ) : (
+                    <SelectCardItem card={option as UserCard} />
+                  )}
+                </DropdownOption>
               );
             })}
           </ul>

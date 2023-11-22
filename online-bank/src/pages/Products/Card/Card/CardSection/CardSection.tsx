@@ -14,7 +14,7 @@ export const CardSection: React.FC<CardSectionProps> = ({ card }) => {
   return (
     <section className="card-page__section card-section">
       <Wrapper>
-        <div className="go-back-btn">
+        <div className="go-back-btn" onClick={() => history.back()}>
           {" "}
           <Typography text={"< Go Back"} weight="strong" />
         </div>

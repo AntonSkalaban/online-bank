@@ -1,6 +1,7 @@
 .checkbox {
     display: flex;  
     align-items: center;
+    gap: 5px;
 
     position: relative;
 
@@ -27,7 +28,7 @@
   border-radius: 2px;
   background-color: #fff;
   border: solid 1.5px rgba(140,150,177,.5);
-  margin-right: 15px;
+  margin-right: 10px;
   
   z-index: 10;
   }

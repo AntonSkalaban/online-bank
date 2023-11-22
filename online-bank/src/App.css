@@ -21,11 +21,11 @@ body {
     position: relative;
 }
 
-.card-img_mastercard {
+.card-img_visa {
     background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.7),  black, black);
 }
 
-.card-img_visa {
+.card-img_mastercard {
     background-image: linear-gradient(120deg, rgba(255,215, 0, 0.7),  gold ,  gold);
 }
 

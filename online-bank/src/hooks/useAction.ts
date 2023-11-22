@@ -1,9 +1,19 @@
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import { updateCardFilter } from "store/slice";
+import {
+  updateCardFilter,
+  updateTransferCards,
+  updateTransferAmount,
+  updateTransferErrors,
+  removeTransferErrors,
+} from "store/slice";
 
 const actions = {
   updateCardFilter,
+  updateTransferCards,
+  updateTransferAmount,
+  updateTransferErrors,
+  removeTransferErrors,
 };
 
 export const useAction = () => {

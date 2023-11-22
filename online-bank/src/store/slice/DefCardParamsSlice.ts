@@ -1,4 +1,4 @@
-import { DefaultCard } from "type/type";
+import { DefaultCard } from "type";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: DefaultCard = {
@@ -9,7 +9,7 @@ const initialState: DefaultCard = {
   isVirtual: false,
 };
 
-export const CardFilterSlice = createSlice({
+export const DefCardParamsSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
@@ -22,6 +22,6 @@ export const CardFilterSlice = createSlice({
   },
 });
 
-export const { updateCardFilter } = CardFilterSlice.actions;
+export const { updateCardFilter } = DefCardParamsSlice.actions;
 
-export default CardFilterSlice.reducer;
+export default DefCardParamsSlice.reducer;

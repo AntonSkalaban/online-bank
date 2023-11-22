@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ICardButton } from "type";
 import "./style.css";
 
@@ -8,11 +9,18 @@ interface CardButtonProps {
 }
 
 export const CardButton: React.FC<CardButtonProps> = ({
-  data: { title, img },
+  data: { title, img, route },
   btnSize = "medium",
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log(window.location.href);
+    navigate(route);
+  };
+
   return (
-    <button className={`card-btn card-btn_${btnSize}`}>
+    <button className={`card-btn card-btn_${btnSize}`} onClick={handleClick}>
       <div className={`card-btn__img-container_${btnSize}`}>
         <img className="card-btn__img" src={img} />
       </div>

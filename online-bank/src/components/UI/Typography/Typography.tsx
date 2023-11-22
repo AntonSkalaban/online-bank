@@ -2,10 +2,10 @@ import React, { ReactNode } from "react";
 import "./style.css";
 
 interface TypographyProps {
-  text?: string;
+  text?: string | number;
   children?: ReactNode;
   color?: "grey" | "green" | "red" | "white" | "black";
-  weight?: "normal" | "strong";
+  weight?: "normal" | "normal-plus" | "strong";
   size?: "normal" | "big";
 }
 

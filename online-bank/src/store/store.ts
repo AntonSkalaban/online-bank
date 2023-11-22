@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { productAPI } from "services/api";
-import CardParamsSlice from "./slice/CardFilterSlice";
+import { DefCardParamsSlice, TransferFormSlice } from "./slice";
 
 export const store = configureStore({
   reducer: {
-    card: CardParamsSlice,
+    card: DefCardParamsSlice,
+    transferForm: TransferFormSlice,
     [productAPI.reducerPath]: productAPI.reducer,
   },
   middleware: (getDefaultMiddleware) => {

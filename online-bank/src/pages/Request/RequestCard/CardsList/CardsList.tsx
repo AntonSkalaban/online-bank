@@ -51,7 +51,7 @@ export const CardsList: React.FC<CardsListProps> = ({ isConfirm }) => {
             </div>
             <Button
               size={"medium"}
-              color={isConfirm ? "green" : ""}
+              color={isConfirm ? "green" : "default"}
               disabled={!isConfirm}
               title={"Request"}
               clickHandler={() => {

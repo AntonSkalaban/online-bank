@@ -1,0 +1,12 @@
+.cards-select-block {
+    margin-top: 10px;
+}
+.swap-cards {
+    width: 40px;
+    height: 40px;
+
+
+    margin: 10px;
+
+    cursor: pointer;
+}

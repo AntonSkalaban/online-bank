@@ -27,6 +27,11 @@
     height: 40px;
 }
 
+.btn_big {
+    min-width: 244px;
+    height: 48px;
+}
+
 .btn_green {
     background-color: #11bf6a;
     box-shadow: 0 4px 6px 0 rgba(45, 129, 87, 0.5);

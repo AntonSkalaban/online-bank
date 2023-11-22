@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 
 interface ButtonProps {
-  size: string;
-  color?: string;
+  size: "medium" | "big";
+  color?: "green" | "default";
   title: string;
   disabled?: boolean;
   clickHandler: () => void;

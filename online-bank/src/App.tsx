@@ -1,7 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components";
-import { Main, Catalog, RequestCard, FetchingCardPage } from "./pages";
+import {
+  Main,
+  Catalog,
+  RequestCard,
+  FetchingCardPage,
+  Transfer,
+} from "./pages";
 import "./App.css";
 
 export const App = () => {
@@ -15,6 +21,10 @@ export const App = () => {
         </Route>
         <Route path="products">
           <Route path=":productType/:id" element={<FetchingCardPage />} />
+          <Route
+            path=":productType/:id/transfer/:category"
+            element={<Transfer />}
+          />
         </Route>
       </Route>
     </Routes>
