@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getTransferFormData } from "store/selectors";
 import { useAction } from "hooks";
 import { InputController } from "helpers";
+import { ExchangeBlock } from "./ExchangeBlock/ExchangeBlock";
 import { Typography } from "components/UI";
 import "./style.css";
 
 export const AmountTransfer = () => {
-  const { updateTransferAmount, updateTransferErrors, removeTransferErrors } =
-    useAction();
+  const {
+    updateForm,
+    updateTransferErrors,
+    removeTransferErrors,
+    initCheckbox,
+  } = useAction();
 
   const {
-    selectCards: { fromCard },
     amount,
+    hasCheckbox,
+    selectCards: { fromCard },
     errors: { isRequireError, isAmountError },
   } = useSelector(getTransferFormData);
 
+  useEffect(() => {
+    initCheckbox();
+  });
+
   const handleAmmountChange = (e: React.FormEvent<HTMLInputElement>) => {
     removeTransferErrors();
-    updateTransferAmount(
-      InputController.getNumberValue(e.currentTarget?.value)
-    );
+    updateForm({
+      amount: InputController.getNumberValue(e.currentTarget?.value),
+    });
     updateTransferErrors();
   };
 
@@ -39,10 +49,12 @@ export const AmountTransfer = () => {
         <div className="border_grey amount__currency">{fromCard.currency}</div>
       </div>
 
-      {isAmountError && <Typography color="red" text="Insufficient funds " />}
+      {isAmountError && <Typography color="red" text="Insufficient funds" />}
       {isRequireError && (
         <Typography color="red" text="Enter the transfer amount" />
       )}
+
+      {hasCheckbox && <ExchangeBlock />}
     </div>
   );
 };

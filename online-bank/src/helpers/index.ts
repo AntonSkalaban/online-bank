@@ -5,3 +5,4 @@ export * from "./Product";
 export * from "./validityToMMYY";
 export * from "./InputController";
 export * from "./removeSelectCardFromOptions";
+export * from "./getCourse";

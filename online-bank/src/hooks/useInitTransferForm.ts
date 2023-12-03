@@ -4,8 +4,8 @@ import { useAction } from "./useAction";
 import { useGetProductByParams } from "./useGetProductByParams";
 import { UserCard } from "type";
 
-export const useGetTransferCards = (cards: UserCard[]) => {
-  const { updateTransferCards } = useAction();
+export const useInitTransferForm = (cards: UserCard[]) => {
+  const { updateTransferCards, clearTransferForm } = useAction();
   const { category } = useParams();
   const { data: defSelectCard } = useGetProductByParams();
 
@@ -14,13 +14,17 @@ export const useGetTransferCards = (cards: UserCard[]) => {
     updateTransferCards({
       fromCard:
         category === "top-up"
-          ? (defSelectCard as UserCard)
-          : cards.filter((card) => card._id !== defSelectCard._id)[0],
+          ? cards.filter((card) => card._id !== defSelectCard._id)[0]
+          : (defSelectCard as UserCard),
       toCard:
         category === "from-up"
-          ? (defSelectCard as UserCard)
-          : cards.filter((card) => card._id !== defSelectCard._id)[0],
+          ? cards.filter((card) => card._id !== defSelectCard._id)[0]
+          : (defSelectCard as UserCard),
     });
+    return () => {
+      clearTransferForm();
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

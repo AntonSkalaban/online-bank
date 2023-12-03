@@ -21,6 +21,9 @@ export const productAPI = createApi({
       }
     >({
       query: ({ productType, id }) => "/" + productType + "/" + id,
+      forceRefetch() {
+        return true;
+      },
     }),
     addProducts: build.mutation<
       UserCard | UserCredit,

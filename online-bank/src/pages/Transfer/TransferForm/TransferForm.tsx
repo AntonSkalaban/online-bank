@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getTransferFormData } from "store/selectors";
 import { withFetchingProducts } from "hok";
 import {
   useAction,
-  useGetTransferCards,
+  useGetCourse,
+  useInitTransferForm,
   useTransferFromCardToCard,
 } from "hooks";
 import { UserCard } from "type";
@@ -18,15 +20,33 @@ interface TransferFormProps {
 }
 
 export const TransferForm: React.FC<TransferFormProps> = ({ products }) => {
+  const { updateTransferErrors } = useAction();
+  const navigate = useNavigate();
+
+  const { selectCards, amount, errors, hasCheckbox, isCheckboxSubmit } =
+    useSelector(getTransferFormData);
+
+  const course = useGetCourse(
+    selectCards.fromCard?.currency,
+    selectCards.toCard?.currency
+  );
+
   const { triggerTransfer } = useTransferFromCardToCard();
 
-  useGetTransferCards(products);
-
-  const { selectCards, amount, errors } = useSelector(getTransferFormData);
+  useInitTransferForm(products);
 
   const hanldeConfirm = () => {
-    if (errors.isAmountError || errors.isRequireError) return;
-    triggerTransfer(selectCards.fromCard, selectCards.toCard, amount);
+    updateTransferErrors();
+    if (
+      errors.isAmountError ||
+      amount === 0 ||
+      (hasCheckbox && !isCheckboxSubmit)
+    )
+      return;
+
+    triggerTransfer(selectCards.fromCard, selectCards.toCard, amount, course);
+    alert("Success");
+    navigate("/");
   };
 
   if (!selectCards.fromCard || !selectCards.toCard) return;
