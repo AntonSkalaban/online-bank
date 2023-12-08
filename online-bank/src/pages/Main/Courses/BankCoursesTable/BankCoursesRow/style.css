@@ -1,0 +1,9 @@
+.coureses-cell__name {
+    display: flex;
+    gap: 8px;
+}
+
+.coureses__img {
+   width: 20px;
+   height: 20px;
+}

@@ -1,0 +1,11 @@
+.courses__national-table {
+    padding-top: 12px;
+}
+
+.courses__national-row {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+
+    margin-bottom: 10px;
+}

@@ -19,6 +19,8 @@
     color:  #6c757d;
    
     transition: color 0.3s;
+
+    cursor: pointer;
 }
 
 .nav__link_active {

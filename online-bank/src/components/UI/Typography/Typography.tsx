@@ -6,7 +6,7 @@ interface TypographyProps {
   children?: ReactNode;
   color?: "grey" | "green" | "red" | "white" | "black";
   weight?: "normal" | "normal-plus" | "strong";
-  size?: "normal" | "big";
+  size?: "small" | "normal" | "big";
 }
 
 export const Typography = ({

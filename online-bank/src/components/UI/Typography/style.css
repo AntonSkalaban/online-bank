@@ -11,15 +11,15 @@
     font-size: 14px;
 }
 
+.typography_small {
+    font-size: 12px;
+}
+
 .typography_big {
     font-size: 16px;
 }
 .typography_strong {
     font-weight: 600;
-}
-
-.typography_red {
-    color: black;
 }
 
 .typography_grey {

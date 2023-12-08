@@ -1,0 +1,8 @@
+.courses__national-cell {
+    display: flex;
+    align-items: center;
+}
+
+.courses__national-cell :last-child {
+    align-self: flex-start; 
+}

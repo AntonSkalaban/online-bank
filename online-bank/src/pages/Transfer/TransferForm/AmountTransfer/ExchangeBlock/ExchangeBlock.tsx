@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getTransferFormData } from "store/selectors";
 import { useAction, useGetCourse } from "hooks";
+import { Course } from "helpers";
 import { Typography } from "components/UI";
 import { Checkbox } from "components";
 
@@ -20,7 +21,8 @@ export const ExchangeBlock = () => {
     <>
       {course && (
         <Typography>
-          1 {toCard.currency} = {course.toFixed(2)} {fromCard.currency}
+          1 {toCard.currency} = {Course.getBankCourse(course, "sale")}{" "}
+          {fromCard.currency}
         </Typography>
       )}
       <Checkbox

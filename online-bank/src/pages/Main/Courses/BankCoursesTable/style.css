@@ -1,0 +1,7 @@
+.courses__bank-table {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    padding-top: 12px;
+}

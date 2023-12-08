@@ -1,9 +1,9 @@
 import React from "react";
 import { Services } from "./Services/Services";
-import "./style.css";
-
-import { Wrapper } from "components/UI/Wrapper/Wrapper";
 import { Products } from "./Products/Products";
+import { Courses } from "./Courses/Courses";
+import { Wrapper } from "components/UI/Wrapper/Wrapper";
+import "./style.css";
 
 export const Main = () => {
   return (
@@ -11,6 +11,7 @@ export const Main = () => {
       <Services />
       <Wrapper>
         <Products />
+        <Courses />
       </Wrapper>
     </div>
   );

@@ -3,6 +3,10 @@
     margin-top: 32px;
 }
 
+.main__section:last-child {
+    margin-bottom: 20px;
+}
+
 .products__dropdowns-list{
     display: flex;
     flex-direction: column;
