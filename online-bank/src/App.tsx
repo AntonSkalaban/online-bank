@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components";
 import {
   Main,
-  Catalog,
+  PaymentsAndTransfers,
   RequestCard,
   FetchingCardPage,
   Transfer,
@@ -15,7 +15,10 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
-        <Route path="catalog" element={<Catalog />} />
+        <Route
+          path="payments-and-transfers"
+          element={<PaymentsAndTransfers />}
+        />
         <Route path="request">
           <Route path="cards" element={<RequestCard />} />
         </Route>
@@ -26,9 +29,8 @@ export const App = () => {
             element={<Transfer />}
           />
         </Route>
+        <Route path="transfer" element={<Transfer />} />
       </Route>
     </Routes>
   );
 };
-
-export default App;

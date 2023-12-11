@@ -4,3 +4,5 @@ export * from "./Typography/Typography";
 export * from "./Button/Button";
 export * from "./GoBackArrow/GoBackArrow";
 export * from "./LoadingSpinner/LoadingSpinner";
+export * from "./CardButton/CardButton";
+export * from "./CardButtonsList/CardButtonsList";

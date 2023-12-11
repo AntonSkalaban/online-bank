@@ -1,0 +1,32 @@
+.payments-and-transfers__list { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 20px 0 20px 0;
+}
+
+.payments-and-transfers__link{ 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.payments-and-transfers__img-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payments__img-container {
+    background-color: #e5f9eb;
+}
+
+.transfers__img-container {
+    background-color: #e2f9f9;
+}
+

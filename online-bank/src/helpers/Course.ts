@@ -3,8 +3,8 @@ import { Currency, ExchangeInfo } from "type";
 export class Course {
   static get(
     data: ExchangeInfo,
-    curr1: Currency,
-    curr2: Currency,
+    curr1: Currency | "PLN",
+    curr2: Currency | "PLN",
     isCurrent: boolean
   ) {
     if (isCurrent) {

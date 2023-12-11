@@ -15,14 +15,14 @@ export const ExchangeBlock = () => {
     selectCards: { fromCard, toCard },
   } = useSelector(getTransferFormData);
 
-  const course = useGetCourse(fromCard.currency, toCard.currency);
+  const course = useGetCourse(toCard.currency, fromCard.currency);
 
   return (
     <>
       {course && (
         <Typography>
-          1 {toCard.currency} = {Course.getBankCourse(course, "sale")}{" "}
-          {fromCard.currency}
+          1 {toCard.currency} ={" "}
+          {Course.getBankCourse(course, "sale").toFixed(3)} {fromCard.currency}
         </Typography>
       )}
       <Checkbox

@@ -4,7 +4,7 @@ import "./style.css";
 
 const pages = [
   { name: "Main", path: "" },
-  { name: "Catalog", path: "catalog" },
+  { name: "Payments and transfers", path: "payments-and-transfers" },
 ];
 
 export const Nav = () => {

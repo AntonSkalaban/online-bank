@@ -15,7 +15,6 @@ export const CardButton: React.FC<CardButtonProps> = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log(window.location.href);
     navigate(route);
   };
 

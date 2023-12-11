@@ -1,6 +1,7 @@
 .courses__national-cell {
     display: flex;
     align-items: center;
+    gap: 4px;
 }
 
 .courses__national-cell :last-child {

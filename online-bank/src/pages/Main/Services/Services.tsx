@@ -1,6 +1,6 @@
 import React from "react";
 import { btns } from "./const";
-import { CardButtonsList } from "components/CardButtonsList/CardButtonsList";
+import { CardButtonsList } from "components/UI";
 import "./style.css";
 
 export const Services = () => {

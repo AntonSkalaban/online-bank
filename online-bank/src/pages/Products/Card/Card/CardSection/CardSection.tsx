@@ -1,9 +1,8 @@
-import { Typography, Wrapper } from "components/UI";
 import React from "react";
 import { UserCard } from "type";
 import { btns } from "./const";
 import { CardImage } from "./CardImage/CardImage";
-import { CardButtonsList } from "components";
+import { Typography, Wrapper, CardButtonsList } from "components/UI";
 import "./style.css";
 
 interface CardSectionProps {

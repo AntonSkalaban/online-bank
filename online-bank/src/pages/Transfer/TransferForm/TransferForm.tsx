@@ -49,7 +49,8 @@ export const TransferForm: React.FC<TransferFormProps> = ({ products }) => {
     navigate("/");
   };
 
-  if (!selectCards.fromCard || !selectCards.toCard) return;
+  if (!selectCards.fromCard || !selectCards.toCard)
+    return <p>No cards to transfer</p>;
   return (
     <form
       className="transfer-form"

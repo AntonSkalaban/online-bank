@@ -1,6 +1,5 @@
 import React from "react";
 import { useGetCourse } from "hooks";
-import { Course } from "helpers";
 import { Currency } from "type";
 import { Typography } from "components/UI";
 import "./style.css";
@@ -16,8 +15,8 @@ export const NationalCoursesRow: React.FC<NationalCoursesRowProps> = ({
   curr,
   img,
 }) => {
-  const courseCurrent = useGetCourse(curr as Currency, "USD");
-  const coursePrev = useGetCourse(curr as Currency, "USD", false);
+  const courseCurrent = useGetCourse(curr, "USD");
+  const coursePrev = useGetCourse(curr, "USD", false);
 
   if (!courseCurrent || !coursePrev) return;
   const coursesDiff = coursePrev - courseCurrent;

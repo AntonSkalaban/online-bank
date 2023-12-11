@@ -1,6 +1,6 @@
 import React from "react";
 import { ICardButton } from "type";
-import { CardButton } from "components";
+import { CardButton } from "../CardButton/CardButton";
 import "./style.css";
 
 interface CardButtonsListProps {

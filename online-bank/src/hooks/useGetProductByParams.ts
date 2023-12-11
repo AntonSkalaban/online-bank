@@ -5,8 +5,8 @@ export const useGetProductByParams = () => {
   const { productType, id } = useParams();
 
   const { data, isFetching } = productAPI.useGetProductQuery({
-    productType: productType ?? "",
-    id: id ?? "",
+    productType,
+    id,
   });
 
   return { data, isFetching };
