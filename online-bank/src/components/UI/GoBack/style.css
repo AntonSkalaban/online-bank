@@ -1,0 +1,10 @@
+.go-back-title{
+    padding: 7px 0 7px 0;
+    cursor: pointer;
+}
+
+.go-back-title__svg {
+    width: 14px;
+    height: 10px;
+    fill: gray;
+}

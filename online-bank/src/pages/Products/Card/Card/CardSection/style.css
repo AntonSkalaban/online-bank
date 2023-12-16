@@ -1,5 +1,4 @@
 .card-section {
-    height: 270px;
     background: #f5f5f5;
     padding: 32px 16px;
 }
@@ -9,6 +8,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr 1fr; 
+
+    margin-top: 10px;
 }
 
 .card-page__card-info {
@@ -34,13 +35,6 @@
     grid-column: 2;
     grid-row: 2;
 }
-
-
-.go-back-btn {
-    padding: 7px 0;
-    cursor: pointer;
-}
-
 
 .card-info__img-container {
     width: 20px;

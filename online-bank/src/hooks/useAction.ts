@@ -8,6 +8,7 @@ import {
   clearTransferForm,
   initCheckbox,
   updateForm,
+  updateMapFilter,
 } from "store/slice";
 
 const actions = {
@@ -18,6 +19,7 @@ const actions = {
   clearTransferForm,
   initCheckbox,
   updateForm,
+  updateMapFilter,
 };
 
 export const useAction = () => {

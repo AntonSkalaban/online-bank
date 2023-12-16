@@ -1,2 +1,3 @@
 export * from "./CardParamsSelector";
-export * from "./TransferFormSlice";
+export * from "./TransferFormSelector";
+export * from "./MapSelector";

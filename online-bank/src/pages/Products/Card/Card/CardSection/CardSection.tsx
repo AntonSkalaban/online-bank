@@ -2,7 +2,7 @@ import React from "react";
 import { UserCard } from "type";
 import { btns } from "./const";
 import { CardImage } from "./CardImage/CardImage";
-import { Typography, Wrapper, CardButtonsList } from "components/UI";
+import { GoBack, Wrapper, CardButtonsList } from "components/UI";
 import "./style.css";
 
 interface CardSectionProps {
@@ -13,10 +13,7 @@ export const CardSection: React.FC<CardSectionProps> = ({ card }) => {
   return (
     <section className="card-page__section card-section">
       <Wrapper>
-        <div className="go-back-btn" onClick={() => history.back()}>
-          {" "}
-          <Typography text={"< Go Back"} weight="strong" />
-        </div>
+        <GoBack />
 
         <div className="card-page__card-container">
           <CardImage

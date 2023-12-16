@@ -1,8 +1,8 @@
 import React from "react";
 import { Services } from "./Services/Services";
 import { Products } from "./Products/Products";
-import { Courses } from "./Courses/Courses";
-import { Wrapper } from "components/UI/Wrapper/Wrapper";
+import { Sidebar } from "components";
+import { Wrapper } from "components/UI";
 import "./style.css";
 
 export const Main = () => {
@@ -10,8 +10,10 @@ export const Main = () => {
     <div className="page main-page">
       <Services />
       <Wrapper>
-        <Products />
-        <Courses />
+        <div className="main-page__main">
+          <Products />
+          <Sidebar />
+        </div>
       </Wrapper>
     </div>
   );

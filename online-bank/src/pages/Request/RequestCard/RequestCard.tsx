@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CardCreationForm } from "./CardCreationForm/CardCreationForm";
 import { CardsList } from "./CardsList/CardsList";
 import { AgreementCheckbox } from "./AgreementCheckbox/AgreementCheckbox";
-import { GoBackArrow, SectionHeader, Wrapper } from "components/UI";
+import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
 import "./style.css";
 
 export const RequestCard = () => {
@@ -17,7 +17,10 @@ export const RequestCard = () => {
       <div className="request-card__header">
         <Wrapper>
           <div className="reqest-card__header-wrapper">
-            <GoBackArrow />
+            <div className="request-card__go-back-btn-container">
+              <GoBackBtn />
+            </div>
+
             <div className="request-card__cards">
               <div className="request-card__front-card">
                 <span>New card</span>
@@ -29,7 +32,7 @@ export const RequestCard = () => {
       </div>
       <Wrapper>
         <section className="request-card__section">
-          <SectionHeader title="Specify card parameters" type="big" />
+          <SectionHeader title="Specify card parameters" />
 
           <CardCreationForm />
 

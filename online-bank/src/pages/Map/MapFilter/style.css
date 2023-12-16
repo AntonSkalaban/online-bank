@@ -1,0 +1,8 @@
+.map__filter {
+    display: flex;
+    gap: 40px;
+
+    border: solid 1px #dbdfe2;
+    border-radius: 8px;
+    padding: 20px;
+}

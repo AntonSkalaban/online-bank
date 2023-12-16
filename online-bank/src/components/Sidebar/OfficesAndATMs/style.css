@@ -1,0 +1,11 @@
+.offices-and-atms__link {
+    display: flex;
+    align-items: center;
+    
+    gap: 8px
+}
+.offices-and-atms__img-container {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}

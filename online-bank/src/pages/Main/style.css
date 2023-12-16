@@ -1,0 +1,13 @@
+.main-page__main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    gap: 40px;
+}
+
+@media (max-width: 900px) {
+    .main-page__main  {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+  }

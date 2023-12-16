@@ -1,4 +1,4 @@
-.go-back-arrow {
+/* go-back-arrow {
     width: 28px;
     height: 40px;
     background: none;
@@ -11,4 +11,20 @@
     left: -25px;
     top: calc(50% - 50px/2 - 5px); 
     cursor: pointer;
+} */
+
+
+.go-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+
+    cursor: pointer;
+
+}
+.go-back-arrow {
+    width: 28px;
+    height: 40px;
+    fill: black;
 }

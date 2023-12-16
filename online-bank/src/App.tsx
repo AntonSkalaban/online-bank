@@ -7,6 +7,7 @@ import {
   RequestCard,
   FetchingCardPage,
   Transfer,
+  Map,
 } from "./pages";
 import "./App.css";
 
@@ -30,6 +31,7 @@ export const App = () => {
           />
         </Route>
         <Route path="transfer" element={<Transfer />} />
+        <Route path="map" element={<Map />} />
       </Route>
     </Routes>
   );

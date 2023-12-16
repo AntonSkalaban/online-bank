@@ -16,6 +16,10 @@
 
     position: relative;
 }
+
+.request-card__go-back-btn-container {
+    position: absolute;
+}
 .request-card__cards{
     height: 200px;
     width: 300px;
