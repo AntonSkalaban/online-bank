@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getMapFilters } from "store/selectors";
 import { useAction } from "hooks";
+import { data } from "./const";
 import { Checkbox } from "components";
 import { Typography } from "components/UI";
-import { data } from "./const";
 import "./style.css";
 
 export const MapFilter = () => {

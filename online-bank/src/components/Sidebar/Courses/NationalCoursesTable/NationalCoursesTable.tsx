@@ -1,8 +1,8 @@
 import React from "react";
 import { Typography } from "components/UI";
 import { currencies } from "./const";
-import "./style.css";
 import { NationalCoursesRow } from "./NationalCoursesRow/NationalCoursesRow";
+import "./style.css";
 
 export const NationalCoursesTable = () => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
-import "./style.css";
 import { Tabs } from "components";
 import { tabs } from "./const";
 import { PaymentsAndTransfersList } from "./PaymentsAndTransfersList/PaymentsAndTransfersList";
 import { Wrapper } from "components/UI";
+import "./style.css";
 
 const components = {
   payments: <PaymentsAndTransfersList listCategory={"payments"} />,
