@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { getTransferFormData } from "store/selectors";
 import { useAction, useGetCourse } from "hooks";
 import { Course } from "helpers";
-import { Typography } from "components/UI";
-import { Checkbox } from "components";
+import { Typography, Checkbox } from "components/UI";
 
 export const ExchangeBlock = () => {
   const { updateForm } = useAction();

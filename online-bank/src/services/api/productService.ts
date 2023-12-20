@@ -1,6 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { Product } from "helpers";
-import { UserCredit, UserCard, DefaultCard, ProdyctType } from "type";
+import {
+  UserCredit,
+  UserCard,
+  DefaultCard,
+  ProdyctType,
+  UserDeposit,
+} from "type";
 
 export const productAPI = createApi({
   reducerPath: "productAPI",
@@ -9,7 +15,10 @@ export const productAPI = createApi({
     baseUrl: import.meta.env.VITE_API_URL + "/products",
   }),
   endpoints: (build) => ({
-    getProducts: build.query<UserCard[] | UserCredit[], ProdyctType>({
+    getProducts: build.query<
+      UserCard[] | UserCredit[] | UserDeposit[],
+      ProdyctType
+    >({
       query: (productType) => "/" + productType,
       providesTags: (_result, _error, arg) => [arg],
     }),

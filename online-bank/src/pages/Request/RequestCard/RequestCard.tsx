@@ -16,7 +16,7 @@ export const RequestCard = () => {
     <div className="page request-card">
       <div className="request-card__header">
         <Wrapper>
-          <div className="reqest-card__header-wrapper">
+          <div className="reqest-card__header-container">
             <div className="request-card__go-back-btn-container">
               <GoBackBtn />
             </div>

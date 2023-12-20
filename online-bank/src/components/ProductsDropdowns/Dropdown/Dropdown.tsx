@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { productAPI } from "services/api";
 import { ProdyctType } from "type";
 import { ProductsList } from "./ProductsList/ProductsList";
-import { Typography } from "components/UI";
+import { EmptyContainer } from "./EmptyContainer/EmptyContainer";
 import Checkmark from "assets/svg/checkmark.svg";
 import Plus from "assets/svg/plus.svg";
 import "./style.css";
@@ -48,13 +48,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ name, type }) => {
           {!isFetching && products?.length ? (
             <ProductsList products={products} productType={type} />
           ) : (
-            <div className="dropdown__empty-contaner">
-              <Typography text="You don't have a registered product yet" />
-
-              <Typography color="green">
-                <a className="dropdown__empty-link">More details</a>
-              </Typography>
-            </div>
+            <EmptyContainer />
           )}
         </div>
       )}

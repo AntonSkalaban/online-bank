@@ -1,14 +1,14 @@
 import React from "react";
-import { Services } from "./Services/Services";
+import { btns } from "./const";
 import { Products } from "./Products/Products";
-import { Sidebar } from "components";
+import { Sidebar, Services } from "components";
 import { Wrapper } from "components/UI";
 import "./style.css";
 
 export const Main = () => {
   return (
     <div className="page main-page">
-      <Services />
+      <Services btns={btns} />
       <Wrapper>
         <div className="main-page__main">
           <Products />

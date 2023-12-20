@@ -7,3 +7,5 @@ export * from "./LoadingSpinner/LoadingSpinner";
 export * from "./CardButton/CardButton";
 export * from "./CardButtonsList/CardButtonsList";
 export * from "./GoBack/GoBack";
+export * from "./Checkbox/Checkbox";
+export * from "./Select/Select";

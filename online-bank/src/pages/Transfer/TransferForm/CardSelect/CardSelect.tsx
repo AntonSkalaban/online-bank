@@ -4,8 +4,7 @@ import { getTransferFormData } from "store/selectors";
 import { useAction } from "hooks";
 import { removeSelectCardFromOptions } from "helpers";
 import { UserCard } from "type";
-import { DropdownSelect } from "components";
-import { Typography } from "components/UI";
+import { Typography, Select } from "components/UI";
 import Swap from "assets/svg/arrow-swap.svg";
 import "./style.css";
 
@@ -41,7 +40,7 @@ export const CardSelect: React.FC<CardSelectProps> = ({ cards }) => {
   return (
     <div className="cards-select-block">
       <Typography text="From card" />
-      <DropdownSelect
+      <Select
         options={fromCards as UserCard[]}
         name={"fromCard"}
         checkedValue={fromCard}
@@ -49,7 +48,7 @@ export const CardSelect: React.FC<CardSelectProps> = ({ cards }) => {
       />
       <img className="swap-cards" src={Swap} onClick={swapCards} />
       <Typography text="To card" />
-      <DropdownSelect
+      <Select
         options={toCards as UserCard[]}
         name={"toCard"}
         checkedValue={toCard}

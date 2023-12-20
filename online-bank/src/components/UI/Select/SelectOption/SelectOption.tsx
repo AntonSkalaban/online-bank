@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-interface DropdownOptionProps {
+interface SelectOptionProps {
   name: string;
   isChecked: boolean;
   value: string;
@@ -8,7 +8,7 @@ interface DropdownOptionProps {
   selectHandler: (val: Record<string, string>) => void;
 }
 
-export const DropdownOption: React.FC<DropdownOptionProps> = ({
+export const SelectOption: React.FC<SelectOptionProps> = ({
   name,
   value,
   isChecked,
@@ -20,12 +20,8 @@ export const DropdownOption: React.FC<DropdownOptionProps> = ({
   };
 
   return (
-    <li
-      className={`select-dropdown__item ${
-        isChecked && "select-dropdown__item_checked"
-      }`}
-    >
-      <label className="select-dropdown__item-label">
+    <li className={`select__item ${isChecked && "select__item_checked"}`}>
+      <label className="select__item-label">
         <input
           className="list__input"
           type="radio"

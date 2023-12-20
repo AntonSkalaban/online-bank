@@ -1,12 +1,18 @@
 import React from "react";
-import { btns } from "./const";
+import { ICardButton } from "type";
 import { CardButtonsList } from "components/UI";
 import "./style.css";
 
-export const Services = () => {
+interface ServicesProps {
+  btns: ICardButton[];
+  children?: React.ReactNode;
+}
+
+export const Services: React.FC<ServicesProps> = ({ btns, children }) => {
   return (
     <section className="services section_gray">
       <CardButtonsList btns={btns} />
+      {children}
     </section>
   );
 };

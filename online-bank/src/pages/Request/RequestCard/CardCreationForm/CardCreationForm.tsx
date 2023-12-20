@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { getCardParams } from "store/selectors";
 import { useAction } from "hooks";
 import { currency, paymentSystem } from "const";
-import { Checkbox, DropdownSelect } from "components";
-import { Typography } from "components/UI";
+import { Typography, Checkbox, Select } from "components/UI";
 import "./style.css";
 
 export const CardCreationForm = () => {
@@ -21,7 +20,7 @@ export const CardCreationForm = () => {
       <div className="creation-form__select-container">
         <div className="creation-form__payment creation-form__select-block currency-select">
           <Typography text="Payment system" />
-          <DropdownSelect
+          <Select
             name={"paymentSystem"}
             options={paymentSystem as unknown as string[]}
             checkedValue={defaultFilterParams.paymentSystem}
@@ -30,7 +29,7 @@ export const CardCreationForm = () => {
         </div>
         <div className="creation-form__currency creation-form__select-block">
           <Typography text="Currency" />
-          <DropdownSelect
+          <Select
             name={"currency"}
             options={currency as unknown as string[]}
             checkedValue={defaultFilterParams.currency}

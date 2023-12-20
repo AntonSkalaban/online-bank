@@ -1,20 +1,20 @@
 import React, { useRef, useState } from "react";
 import { useOnClickOutside } from "hooks";
 import { UserCard } from "type";
-import { DropdownOption } from "./DropdownOption/DropdownOption";
 import { SelectStringItem } from "./SelectItems/StringItem/StringItem";
 import { SelectCardItem } from "./SelectItems/CardItem/CardItem";
 import Checkmark from "assets/svg/checkmark.svg";
 import "./style.css";
+import { SelectOption } from "./SelectOption/SelectOption";
 
-interface DropdownSelectProps {
+interface SelectProps {
   options: string[] | UserCard[];
   name: string;
   checkedValue: string | UserCard;
   selectHandler: (val: Record<string, string>) => void;
 }
 
-export const DropdownSelect: React.FC<DropdownSelectProps> = ({
+export const Select: React.FC<SelectProps> = ({
   options,
   name,
   checkedValue,
@@ -30,9 +30,9 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({
   };
 
   return (
-    <div className="select-dropdown" ref={dropdownRef}>
+    <div className="select" ref={dropdownRef}>
       <div className="border_grey">
-        <div className="select-dropdown__toggle" onClick={toggle}>
+        <div className="select__toggle" onClick={toggle}>
           {typeof checkedValue === "string" ? (
             <SelectStringItem label={checkedValue} />
           ) : (
@@ -49,14 +49,14 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({
         </div>
       </div>
       {isOpen && (
-        <div className="select-dropdown__body">
-          <ul className="select-dropdown__list">
+        <div className="select__body">
+          <ul className="select__list">
             {options.map((option) => {
               const value = typeof option === "string" ? option : option._id;
               const isChecked = value === checkedValue;
 
               return (
-                <DropdownOption
+                <SelectOption
                   key={value}
                   name={name}
                   value={value}
@@ -68,7 +68,7 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({
                   ) : (
                     <SelectCardItem card={option as UserCard} />
                   )}
-                </DropdownOption>
+                </SelectOption>
               );
             })}
           </ul>

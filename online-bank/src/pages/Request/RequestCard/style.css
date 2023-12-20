@@ -11,8 +11,10 @@
     margin-bottom: 16px;
 }
 
-.reqest-card__header-wrapper {
-    width: 608px;
+
+
+.reqest-card__header-container {
+    min-width: 100vw;
 
     position: relative;
 }

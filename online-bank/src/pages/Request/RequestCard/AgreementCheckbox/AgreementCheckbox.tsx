@@ -1,6 +1,5 @@
 import React from "react";
-import { Checkbox } from "components";
-import { Typography } from "components/UI";
+import { Typography, Checkbox } from "components/UI";
 
 interface AgreementCheckboxProps {
   isChecked: boolean;

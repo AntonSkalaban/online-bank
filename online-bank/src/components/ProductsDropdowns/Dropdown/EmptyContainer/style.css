@@ -1,0 +1,12 @@
+.dropdown__empty-contaner {
+    background: #ffffff;
+    border: 1px dashed #0d8423;
+    border-radius: 8px;
+
+    padding: 16px 20px;
+}
+
+.dropdown__empty-link {
+    color: #0D8423;
+    font-weight: 600;
+}

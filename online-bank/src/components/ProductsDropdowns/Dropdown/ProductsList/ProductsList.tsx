@@ -25,7 +25,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
       {products.map((product) => {
         return (
           <li className="products__list-item" key={product._id}>
-            <NavLink to={`products/${productType}/${product._id}`}>
+            <NavLink to={`/products/${productType}/${product._id}`}>
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {components[productType](product as any)}
             </NavLink>
