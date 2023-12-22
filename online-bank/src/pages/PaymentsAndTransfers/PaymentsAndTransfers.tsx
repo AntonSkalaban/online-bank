@@ -1,7 +1,8 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { btns, tabs } from "./const";
 import { PaymentsAndTransfersList } from "./PaymentsAndTransfersList/PaymentsAndTransfersList";
-import { ProductsDropdowns, Services, Sidebar, Tabs } from "components";
+import { Products, Services, Sidebar, Tabs } from "components";
 import { Wrapper } from "components/UI";
 import "./style.css";
 
@@ -11,13 +12,17 @@ const components = {
 };
 
 export const PaymentsAndTransfers = () => {
+  const { category } = useParams();
+  if (!category) return;
   return (
     <div className="page payments-and-transfers-page">
-      <div className="payments-and-transfers-page__container">
-        <div style={{ width: "100%", backgroundColor: "#f5f5f5" }}>
-          <Wrapper>
-            <div className="payments-and-transfers-page__box1">
-              <ProductsDropdowns />
+      <div className="grey-row">
+        <Wrapper>
+          <div className="grid grid-top">
+            <div className="products-wrapper ">
+              <Products />
+            </div>
+            <div style={{ height: "200px" }}>
               <Services btns={btns}>
                 <h2 className="payments-and-transfers-page__title">
                   Pay for services without
@@ -26,18 +31,26 @@ export const PaymentsAndTransfers = () => {
                 <div className="payments-and-transfers-page__man"></div>
               </Services>
             </div>
-          </Wrapper>
-        </div>
-        <Wrapper>
-          <div className="payments-and-transfers-page__box2">
-            <div className="payments-and-transfers-page__main">
-              <Tabs tabs={tabs} selectedTab={"payments"} child={components} />
-            </div>
-
-            <Sidebar />
           </div>
         </Wrapper>
       </div>
+      <Wrapper>
+        <div className="grid grid-3clmn ">
+          <div className="grid-main">
+            <Tabs
+              tabs={tabs}
+              selectedTab={
+                category === "payments" || category === "transfers"
+                  ? category
+                  : "payments"
+              }
+              child={components}
+            />
+          </div>
+
+          <Sidebar />
+        </div>
+      </Wrapper>
     </div>
   );
 };

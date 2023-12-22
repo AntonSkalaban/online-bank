@@ -1,21 +1,20 @@
 import React from "react";
 import { products } from "./const";
 import { Dropdown } from "./Dropdown/Dropdown";
+import "./style.css";
 
-interface ProductsDropdownsProps {
+interface ProductsProps {
   showAll?: boolean;
 }
-export const ProductsDropdowns: React.FC<ProductsDropdownsProps> = ({
-  showAll = true,
-}) => {
+export const Products: React.FC<ProductsProps> = ({ showAll = true }) => {
   return (
-    <div className="products__dropdowns-list">
+    <section className="products">
       {products.map(({ name, type }, index) => {
         if (showAll) {
           return <Dropdown key={name} name={name} type={type} />;
         }
         return index < 1 && <Dropdown key={name} name={name} type={type} />;
       })}
-    </div>
+    </section>
   );
 };

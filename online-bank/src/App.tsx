@@ -17,7 +17,7 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
         <Route
-          path="payments-and-transfers"
+          path="payments-and-transfers?/:category"
           element={<PaymentsAndTransfers />}
         />
         <Route path="request">

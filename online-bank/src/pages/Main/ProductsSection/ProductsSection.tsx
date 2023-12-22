@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { ProductsDropdowns } from "components";
+import { Products } from "components";
 import { SectionHeader } from "components/UI";
 import "./style.css";
 
-export const Products = () => {
+export const ProductsSection = () => {
   const [showAll, setShowAll] = useState(false);
 
   const toggle = () => {
@@ -13,7 +13,7 @@ export const Products = () => {
   return (
     <section className="main__section products">
       <SectionHeader title="Products" />
-      <ProductsDropdowns showAll={showAll} />
+      <Products showAll={showAll} />
       <p className="products__show-all" onClick={toggle}>
         {showAll ? "Hide all products" : "Show all products"}
       </p>

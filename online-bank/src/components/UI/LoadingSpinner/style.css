@@ -6,7 +6,7 @@
        -moz-animation: crabbly_spinner infinite .75s linear;
          -o-animation: crabbly_spinner infinite .75s linear;
             animation: crabbly_spinner infinite .75s linear;
-    border: 4px solid rgb(20, 143, 43);
+    border: 4px solid #148f2b;
     border-top-color: rgba(0, 0, 0, .1);
     border-right-color: rgba(0, 0, 0, .1);
     border-bottom-color: rgba(0, 0, 0, .1);

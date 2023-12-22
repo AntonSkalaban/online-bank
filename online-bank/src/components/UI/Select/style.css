@@ -4,7 +4,7 @@
 }
 
 .border_grey {
-    border: solid 1px rgba(140,150,177,.8);
+    border: solid 1px #8c96b1cc;
     border-radius: 4px;
 }
 
@@ -36,9 +36,9 @@
     right: -17px;
     
     border-radius: 4px;
-    box-shadow: 0 8px 12px 0 rgba(27,39,51,.15);
+    box-shadow: 0 8px 12px 0 #1b273326;
     background-color: #fff;
-    border: solid 1px rgba(140,150,177,.3);
+    border: solid 1px #8c96b14d;
     z-index: 20;
 }
 

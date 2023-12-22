@@ -2,7 +2,7 @@
     display: flex;
     gap: 8px;
 
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid var(--grey-color);
 }
 
 .tabs__item {

@@ -1,6 +1,6 @@
 .btn {
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--white-color);
     box-shadow: 0 1px 2px 0 rgba(27,39,51,.06);
     border: solid 1px rgba(27,39,51,.3);
 
@@ -33,7 +33,7 @@
 }
 
 .btn_green {
-    background-color: #11bf6a;
+    background-color: var(--light-grin-color);
     box-shadow: 0 4px 6px 0 rgba(45, 129, 87, 0.5);
     border: 1px solid rgba(0,0,0,0);
     color: #fff;

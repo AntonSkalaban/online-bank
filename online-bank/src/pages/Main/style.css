@@ -5,6 +5,14 @@
     gap: 40px;
 }
 
+.main__section {
+    margin-top: 32px;
+}
+
+.main__section:last-child {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 900px) {
     .main-page__main  {
         grid-template-columns: 1fr;

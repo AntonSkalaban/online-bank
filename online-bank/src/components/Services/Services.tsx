@@ -10,7 +10,7 @@ interface ServicesProps {
 
 export const Services: React.FC<ServicesProps> = ({ btns, children }) => {
   return (
-    <section className="services section_gray">
+    <section className="services">
       <CardButtonsList btns={btns} />
       {children}
     </section>

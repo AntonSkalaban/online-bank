@@ -23,18 +23,18 @@
 }
 
 .typography_grey {
-    color: rgba(27,39,51,.7);
+    color: #1b2733b3;
 }
 
 .typography_green {
-    color: #11bf6a;
+    color:var(--light-green-color)
 }
 
 .typography_red {
-    color: red;
+    color: var(--red-color)
 }
 
 .typography_white {
-    color: white;
+    color: var(--white-color);
 }
 

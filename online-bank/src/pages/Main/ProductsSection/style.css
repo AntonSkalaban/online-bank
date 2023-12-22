@@ -1,18 +1,3 @@
-.main__section {
-    margin-top: 32px;
-}
-
-.main__section:last-child {
-    margin-bottom: 20px;
-}
-
-.products__dropdowns-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 17px;
-}
-
 .products__show-all {
     width: fit-content;
     font-family: SBSans, Arial, Helvetica, sans-serif;
