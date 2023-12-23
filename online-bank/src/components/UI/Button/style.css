@@ -33,7 +33,7 @@
 }
 
 .btn_green {
-    background-color: var(--light-grin-color);
+    background-color: var(--light-green-color);
     box-shadow: 0 4px 6px 0 rgba(45, 129, 87, 0.5);
     border: 1px solid rgba(0,0,0,0);
     color: #fff;

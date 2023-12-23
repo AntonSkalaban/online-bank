@@ -14,6 +14,7 @@
 }
 
 .products-wrapper .dropdown {
+    border-top: var(--grey-border);
     border-radius: 0;
 }
 

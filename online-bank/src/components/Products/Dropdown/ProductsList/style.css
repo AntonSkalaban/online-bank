@@ -1,11 +1,16 @@
+.products__list-item {
+    border-bottom: 1px solid var(--grey-color);
+    padding: 10px 0 10px 0px;
+}
 
+.products__list-item:last-child {
+   border: none;
+   padding-bottom: 0;
+}
 
 .product__item {
     display: flex;
     align-items: center;
-
-    border-bottom: 1px solid var(--grey-color);
-    padding: 10px 0 10px 0px;
 }
 
 .product__img-container {

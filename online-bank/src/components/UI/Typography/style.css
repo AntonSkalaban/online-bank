@@ -1,10 +1,6 @@
 .typography{
+    height: 1.43em;
     line-height: 1.43;
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
 }
 
 .typography_normal {

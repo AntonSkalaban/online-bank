@@ -4,9 +4,11 @@
     --white-color: #fff;
     --grey-color: #f5f5f5;
     --red-color: red;
-    --green-color: green;
-    --light-grin-color: #11bf6a;
+    --green-color: #0d8423;
+    --light-green-color: #11bf6a;
     --grey-text-color: #6c757d;
+    --grey-border: 1px solid  #26262614;
+    --block-shadow:  rgba(38, 38, 38, 0.04) 0px 1px 2px, rgba(38, 38, 38, 0.16) 0px 4px 8px;
 }
 
 body {
@@ -14,7 +16,6 @@ body {
     font-size: 14px;
     font-weight: 400;
 }
-
 
 .grey-row {
     width: 100vw;
@@ -32,7 +33,6 @@ body {
     justify-content: flex-start;
 }
 
-
 .grid-2clmn {
     grid-template-columns: 320px 540px;
 }
@@ -46,7 +46,6 @@ body {
     grid-column: 2 / span 1;
     padding: 15px;
 }
-
 
 .card-img {
     width: 100%;
