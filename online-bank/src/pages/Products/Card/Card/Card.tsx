@@ -1,5 +1,5 @@
 import React from "react";
-import { withFetchingProduct } from "hok";
+import { withFetchingProduct } from "hoc";
 import { UserCard, UserCredit, UserDeposit } from "type";
 import { CardSection } from "./CardSection/CardSection";
 import { CardTable } from "./CardTable/CardTable";

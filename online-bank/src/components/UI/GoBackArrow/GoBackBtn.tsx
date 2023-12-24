@@ -4,10 +4,12 @@ import "./style.css";
 
 export const GoBackBtn = () => {
   return (
-    <button className="go-back-btn" onClick={() => history.back()}>
-      <svg className="go-back-arrow">
-        <use href={`${Sprites}#arrow-back`} />
-      </svg>
-    </button>
+    <div className="go-back-btn" onClick={() => history.back()}>
+      <div className="go-back__arrow-wrapper">
+        <svg className="go-back-arrow">
+          <use href={`${Sprites}#arrow-back`} />
+        </svg>
+      </div>
+    </div>
   );
 };

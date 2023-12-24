@@ -20,7 +20,7 @@
       "components/*": ["components/*"],
       "pages/*": ["pages/*"],
       "hooks/*": ["hooks/*"],
-      "hok/*": ["hok/*"],
+      "hoc/*": ["hoc/*"],
       "helpers/*": ["helpers/*"],
       "services/*": ["services/*"],
       "store/*": ["store/*"],

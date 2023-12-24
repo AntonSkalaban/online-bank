@@ -1,15 +1,18 @@
 import { productAPI } from "services/api";
 import { UserCard } from "type";
+import { useGetCourse } from "./useGetCourse";
 
-export const useTransferFromCardToCard = () => {
+export const useTransferFromCardToCard = (
+  fromCard: UserCard,
+  toCard: UserCard,
+  amount: number
+) => {
   const [updateCard] = productAPI.useUpdateProductMutation();
+  const course = useGetCourse(fromCard?.currency, toCard?.currency);
 
-  const triggerTransfer = (
-    fromCard: UserCard,
-    toCard: UserCard,
-    amount: number,
-    course = 1
-  ) => {
+  const triggerTransfer = () => {
+    if (!course) return;
+
     updateCard({
       productType: "cards",
       body: fromCard,

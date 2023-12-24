@@ -3,7 +3,6 @@
 }
 
 .section-header__title{
-    font-size: 28px;
     font-family: SBSansDisplay, SBSans, Arial, Helvetica, sans-serif;
     line-height: 36px;
     letter-spacing: -0.3px;
@@ -12,6 +11,10 @@
     padding: 0px;
     font-weight: 600;
     color: rgb(38, 38, 38);
+}
+
+.section-header__title_big {
+    font-size: 32px;
 }
 
 .section-header__title_normal {

@@ -1,26 +1,33 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTransferFormData } from "store/selectors";
 import { useAction } from "./useAction";
 import { useGetProductByParams } from "./useGetProductByParams";
 import { UserCard } from "type";
 
 export const useInitTransferForm = (cards: UserCard[]) => {
-  const { updateTransferCards, clearTransferForm } = useAction();
-  const { category } = useParams();
-  const { data } = useGetProductByParams();
+  const { updateTransferCards, clearTransferForm, initCheckbox } = useAction();
+  const { data: rechargeableCard } = useGetProductByParams();
+
+  const {
+    selectCards: { fromCard, toCard },
+  } = useSelector(getTransferFormData);
 
   useEffect(() => {
-    if (category === "top-up" && !data) return;
+    if (!rechargeableCard) return;
+
     updateTransferCards({
-      fromCard:
-        category === "top-up"
-          ? cards.filter((card) => card._id !== data?._id)[0]
-          : cards[0],
-      toCard: category === "top-up" ? (data as UserCard) : cards[1],
+      fromCard: cards[0]._id !== rechargeableCard?._id ? cards[0] : cards[1],
+      toCard: rechargeableCard as UserCard,
     });
     return () => {
       clearTransferForm();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!fromCard || !toCard) return;
+    initCheckbox();
+  }, [fromCard, initCheckbox, toCard]);
 };

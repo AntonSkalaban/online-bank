@@ -1,7 +1,8 @@
 .amount-block {
     margin-top: 10px;
-    margin-bottom: 42px;
+    margin-bottom: 10px;
 }
+
 .amount__input-wrapper {
     width: fit-content;
     display: flex;
@@ -11,7 +12,7 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 38px;
-    color: rgba(27,39,51,.9);
+    color: #1b2733e6;
 }
 
 .amount__input {

@@ -1,14 +1,20 @@
 .go-back-btn {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+.go-back__arrow-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
 
     cursor: pointer;
-
+    height: 32px;
 }
+
 .go-back-arrow {
     width: 28px;
-    height: 40px;
+    height: 28px;
     fill: black;
 }
