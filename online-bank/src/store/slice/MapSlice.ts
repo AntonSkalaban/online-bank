@@ -6,7 +6,7 @@ export const MapSlice = createSlice({
   reducers: {
     updateMapFilter: (
       state,
-      { payload }: PayloadAction<Record<string, boolean>>
+      { payload }: PayloadAction<{ string: boolean }>
     ) => {
       return { ...state, ...payload };
     },

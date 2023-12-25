@@ -1,6 +1,6 @@
-export { default as DefCardParamsSlice } from "./DefCardParamsSlice";
+export { default as CardRequestSlice } from "./CardRequestSlice";
 export { default as TransferFormSlice } from "./TransferFormSlice";
 export { default as MapSlice } from "./MapSlice";
 export * from "./TransferFormSlice";
-export * from "./DefCardParamsSlice";
+export * from "./CardRequestSlice";
 export * from "./MapSlice";

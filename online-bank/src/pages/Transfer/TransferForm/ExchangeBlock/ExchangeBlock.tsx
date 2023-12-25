@@ -1,16 +1,21 @@
 import React from "react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { getTransferFormData } from "store/selectors";
-import { useAction, useGetCourse } from "hooks";
+import { useGetCourse } from "hooks";
 import { Course } from "helpers";
+import { FormValues } from "type";
 import { Typography, Checkbox } from "components/UI";
 
-export const ExchangeBlock = () => {
-  const { updateForm } = useAction();
-
+interface ExchangeBlockProps {
+  register: UseFormRegister<FormValues>;
+  errors: FieldErrors<FieldValues>;
+}
+export const ExchangeBlock: React.FC<ExchangeBlockProps> = ({
+  register,
+  errors,
+}) => {
   const {
-    isCheckboxSubmit,
-    errors: { isSubmitError },
     selectCards: { fromCard, toCard },
   } = useSelector(getTransferFormData);
 
@@ -26,12 +31,12 @@ export const ExchangeBlock = () => {
       )}
       <Checkbox
         name="isCheckboxSubmit"
-        isChecked={isCheckboxSubmit}
-        selectHandler={updateForm}
+        register={register}
+        errors={errors}
+        isRequired={true}
       >
         <Typography>I agree with the courses *</Typography>
       </Checkbox>
-      {isSubmitError && <Typography color="red" text="Submit" />}
     </>
   );
 };

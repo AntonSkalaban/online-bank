@@ -9,12 +9,6 @@ const initialState = {
   currency: "USD",
   amount: 0,
   hasCheckbox: false,
-  isCheckboxSubmit: false,
-  errors: {
-    isRequireError: false,
-    isAmountError: false,
-    isSubmitError: false,
-  },
 };
 
 export const TransferFormSlice = createSlice({
@@ -44,26 +38,6 @@ export const TransferFormSlice = createSlice({
         },
       };
     },
-    updateTransferErrors: (state) => {
-      return {
-        ...state,
-        errors: {
-          isAmountError: state.amount > state.selectCards.fromCard.balance,
-          isRequireError: state.amount === 0,
-          isSubmitError: state.hasCheckbox && !state.isCheckboxSubmit,
-        },
-      };
-    },
-    removeTransferErrors: (state) => {
-      return {
-        ...state,
-        errors: {
-          isAmountError: false,
-          isRequireError: false,
-          isSubmitError: false,
-        },
-      };
-    },
     clearTransferForm: () => {
       return initialState;
     },
@@ -74,8 +48,6 @@ export const {
   initCheckbox,
   updateForm,
   updateTransferCards,
-  updateTransferErrors,
-  removeTransferErrors,
   clearTransferForm,
 } = TransferFormSlice.actions;
 

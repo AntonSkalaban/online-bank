@@ -3,19 +3,17 @@ import { useDispatch } from "react-redux";
 import {
   updateCardFilter,
   updateTransferCards,
-  updateTransferErrors,
-  removeTransferErrors,
   clearTransferForm,
   initCheckbox,
   updateForm,
+  submitRequestForm,
   updateMapFilter,
 } from "store/slice";
 
 const actions = {
   updateCardFilter,
   updateTransferCards,
-  updateTransferErrors,
-  removeTransferErrors,
+  submitRequestForm,
   clearTransferForm,
   initCheckbox,
   updateForm,

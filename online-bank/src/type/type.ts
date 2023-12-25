@@ -1,3 +1,4 @@
+export type FormValues = Record<string, string | number | boolean>;
 export interface ICardButton {
   title: string;
   img: string;
