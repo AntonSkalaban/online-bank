@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Map, Placemark, YMaps } from "@pbe/react-yandex-maps";
+import { getMapSelectedFilters } from "store/selectors";
 import { mapModules, mapState, placemarks, ymapQurey } from "./const";
 import "./style.css";
-
-import { getMapSelectedFilters } from "store/selectors";
 
 export const YMap = () => {
   const selectedCategoryes = useSelector(getMapSelectedFilters);

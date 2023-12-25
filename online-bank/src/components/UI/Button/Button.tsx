@@ -6,7 +6,7 @@ interface ButtonProps {
   color?: "green" | "default";
   title: string;
   disabled?: boolean;
-  clickHandler: () => void;
+  clickHandler?: () => void;
 }
 export const Button: React.FC<ButtonProps> = ({
   size,

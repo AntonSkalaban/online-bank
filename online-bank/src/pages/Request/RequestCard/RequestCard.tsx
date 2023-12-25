@@ -1,17 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardCreationForm } from "./CardCreationForm/CardCreationForm";
 import { CardsList } from "./CardsList/CardsList";
-import { AgreementCheckbox } from "./AgreementCheckbox/AgreementCheckbox";
 import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
 import "./style.css";
 
 export const RequestCard = () => {
-  const [isConfirm, setIsConfirm] = useState(false);
-
-  const hanldeChange = () => {
-    setIsConfirm((prev) => !prev);
-  };
-
   return (
     <div className="page request-card">
       <div className="request-card__header">
@@ -36,11 +29,7 @@ export const RequestCard = () => {
 
           <CardCreationForm />
 
-          <AgreementCheckbox
-            isChecked={isConfirm}
-            handleChanhe={hanldeChange}
-          />
-          <CardsList isConfirm={isConfirm} />
+          <CardsList />
         </section>
       </Wrapper>
     </div>

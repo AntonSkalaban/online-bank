@@ -1,55 +1,58 @@
 import React from "react";
-import { InputController } from "helpers";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+import { useSelector } from "react-redux";
+import { getTransferFormData } from "store/selectors";
+import { Currency, FormValues } from "type";
 import { Typography } from "components/UI";
-import { Currency } from "type";
 import "./style.css";
 
 interface AmountInputProps {
-  amount: number;
   currency: Currency;
-  errors: { isRequireError: boolean; isAmountError: boolean };
-  removeErrors: () => void;
-  updateErrors: () => void;
-  handleAmountChange: (value: Record<string, number>) => void;
+  register: UseFormRegister<FormValues>;
+  errors: FieldErrors<FormValues>;
 }
 
 export const AmountInput: React.FC<AmountInputProps> = ({
-  amount,
   currency,
   errors,
-  handleAmountChange,
-  removeErrors,
-  updateErrors,
+  register,
 }) => {
-  const { isRequireError, isAmountError } = errors;
-
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    removeErrors();
-    handleAmountChange({
-      amount: InputController.getNumberValue(e.currentTarget?.value),
-    });
-    updateErrors();
-  };
+  const {
+    selectCards: { fromCard },
+  } = useSelector(getTransferFormData);
 
   return (
     <div className="amount-block">
       <Typography text="Amount of payment *" />
       <div className="amount__input-wrapper">
         <input
-          className={`amount__input border_${
-            isAmountError || isRequireError ? "red" : "grey"
-          }`}
+          className={"amount__input"}
           type="tel"
-          onChange={handleChange}
-          value={amount}
+          {...register("amount", {
+            required: "Enter the transfer amount",
+            validate: {
+              enoughFunds: (value) =>
+                +value < fromCard.balance || "Insufficient funds",
+              moreThenTwo: (value) => +value >= 2 || "More than 2",
+            },
+          })}
         />
         <div className="border_grey amount__currency">{currency}</div>
       </div>
-
-      {isAmountError && <Typography color="red" text="Insufficient funds" />}
-      {isRequireError && (
-        <Typography color="red" text="Enter the transfer amount" />
-      )}
+      <ErrorMessage
+        errors={errors}
+        name="amount"
+        render={({ messages }) => {
+          return messages
+            ? Object.entries(messages).map(([type, message]) => (
+                <Typography color="red" key={type}>
+                  {message}
+                </Typography>
+              ))
+            : null;
+        }}
+      />
     </div>
   );
 };

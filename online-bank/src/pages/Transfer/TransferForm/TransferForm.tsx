@@ -1,16 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { getTransferFormData } from "store/selectors";
 import { withFetchingProducts } from "hoc";
+import { InputController } from "helpers";
 import {
   useAction,
   useInitTransferForm,
   useTransferFromCardToCard,
 } from "hooks";
-import { UserCard } from "type";
+import { UserCard, FormValues } from "type";
 import { CardsSelect } from "./CardsSelect/CardsSelect";
-import { ExchangeBlock } from "./AmountTransfer/ExchangeBlock/ExchangeBlock";
+import { ExchangeBlock } from "./ExchangeBlock/ExchangeBlock";
 import { AmountInput } from "components";
 import { Button, Typography } from "components/UI";
 import "./style.css";
@@ -20,20 +22,26 @@ interface TransferFormProps {
 }
 
 export const TransferForm: React.FC<TransferFormProps> = ({ products }) => {
+  const navigate = useNavigate();
+  const { updateForm } = useAction();
+
   const {
     selectCards: { fromCard, toCard },
-    amount,
-    errors,
     hasCheckbox,
-    isCheckboxSubmit,
+    amount,
   } = useSelector(getTransferFormData);
 
-  const navigate = useNavigate();
-
-  useInitTransferForm(products);
-
-  const { updateForm, updateTransferErrors, removeTransferErrors } =
-    useAction();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm({
+    defaultValues: {
+      amount: 0,
+    } as FormValues,
+    criteriaMode: "all",
+  });
 
   const { triggerTransfer } = useTransferFromCardToCard(
     fromCard,
@@ -41,48 +49,45 @@ export const TransferForm: React.FC<TransferFormProps> = ({ products }) => {
     amount
   );
 
-  const hanldeConfirm = () => {
-    updateTransferErrors();
-    if (
-      errors.isAmountError ||
-      amount === 0 ||
-      (hasCheckbox && !isCheckboxSubmit)
-    )
-      return;
+  useInitTransferForm(products);
 
+  useEffect(() => {
+    const subscription = watch((value, { name }) => {
+      if (!name) return;
+      if (name === "amount") {
+        updateForm({
+          amount: InputController.getNumberValue(
+            value[name] as string
+          ).toString(),
+        });
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [updateForm, watch]);
+
+  const onSubmit = () => {
     triggerTransfer();
-    alert("Success");
     navigate("/");
   };
 
   if (!fromCard || !toCard) return <p>No cards to transfer</p>;
 
   return (
-    <form
-      className="transfer-form"
-      onSubmit={(e: React.FormEvent) => e.preventDefault()}
-    >
+    <form className="transfer-form" onSubmit={handleSubmit(onSubmit)}>
       <Typography text="* — fields are required" />
 
       <CardsSelect cards={products} />
 
       <AmountInput
-        amount={amount}
-        currency={fromCard.currency}
+        register={register}
         errors={errors}
-        removeErrors={removeTransferErrors}
-        updateErrors={updateTransferErrors}
-        handleAmountChange={updateForm}
+        currency={fromCard.currency}
       />
 
-      {hasCheckbox && <ExchangeBlock />}
+      {hasCheckbox && <ExchangeBlock register={register} errors={errors} />}
 
-      <Button
-        size="big"
-        color="green"
-        title="Submit"
-        clickHandler={hanldeConfirm}
-      />
+      <Button size="big" color="green" title="Submit" />
     </form>
   );
 };

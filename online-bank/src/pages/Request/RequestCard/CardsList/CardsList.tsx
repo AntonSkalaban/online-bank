@@ -1,17 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getCardParams } from "store/selectors";
+import { getCardParams, getRequestFormStatus } from "store/selectors";
 import { productAPI } from "services/api";
 import { getAvaliableCards, getCardPircture } from "helpers";
 import { DefaultCard } from "type";
 import { Button } from "components/UI";
 import "./style.css";
 
-interface CardsListProps {
-  isConfirm: boolean;
-}
-export const CardsList: React.FC<CardsListProps> = ({ isConfirm }) => {
+export const CardsList = () => {
   const cardParams = useSelector(getCardParams);
+  const isSubmit = useSelector(getRequestFormStatus);
   const avaliableCards = getAvaliableCards(cardParams);
 
   const [requestCard] = productAPI.useAddProductsMutation();
@@ -51,8 +49,8 @@ export const CardsList: React.FC<CardsListProps> = ({ isConfirm }) => {
             </div>
             <Button
               size={"medium"}
-              color={isConfirm ? "green" : "default"}
-              disabled={!isConfirm}
+              color={isSubmit ? "green" : "default"}
+              disabled={!isSubmit}
               title={"Request"}
               clickHandler={() => {
                 handleClick(card);
