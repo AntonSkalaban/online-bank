@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useFormContext } from "react-hook-form";
 import { Map, Placemark, YMaps } from "@pbe/react-yandex-maps";
-import { getMapSelectedFilters } from "store/selectors";
 import { mapModules, mapState, placemarks, ymapQurey } from "./const";
 import "./style.css";
 
 export const YMap = () => {
-  const selectedCategoryes = useSelector(getMapSelectedFilters);
+  const { watch } = useFormContext();
+  const selectedCategoryes = watch("mapObjects") as string[];
+
   const mapRef = useRef<ymaps.Map | null>(null);
 
   useEffect(() => {

@@ -9,7 +9,10 @@ interface CheckboxProps {
   name: string;
   label?: string;
   children?: ReactNode;
-  register: UseFormRegister<FormValues>;
+  value?: string;
+  register:
+    | UseFormRegister<FormValues>
+    | UseFormRegister<Record<string, string[]>>;
   errors?: FieldErrors<FieldValues>;
   isRequired?: boolean;
 }
@@ -18,6 +21,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   name,
   label,
   children,
+  value,
   register,
   errors,
   isRequired = false,
@@ -27,6 +31,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       <label className="checkbox">
         <input
           type="checkbox"
+          value={value}
           {...register(name, {
             required: isRequired ? "Is required" : "",
           })}

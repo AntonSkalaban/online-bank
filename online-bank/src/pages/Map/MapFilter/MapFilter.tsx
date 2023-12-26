@@ -1,43 +1,30 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useAction } from "hooks";
-import { FormValues } from "type";
-import { data } from "./const";
+import React from "react";
+import { useFormContext } from "react-hook-form";
 import { Typography, Checkbox } from "components/UI";
 import "./style.css";
 
-export const MapFilter = () => {
-  const { updateMapFilter } = useAction();
-
-  const { register, watch } = useForm({
-    defaultValues: {
-      banks: true,
-      atms: true,
-    } as FormValues,
-    criteriaMode: "all",
-    mode: "onChange",
-  });
-
-  useEffect(() => {
-    const subscription = watch((value, { name }) => {
-      if (!name) return;
-      updateMapFilter({ [name]: value[name] } as { string: boolean });
-    });
-
-    return () => subscription.unsubscribe();
-  }, [updateMapFilter, watch]);
+interface MapFilterProps {
+  data: { value: string; title: string }[];
+}
+export const MapFilter: React.FC<MapFilterProps> = ({ data }) => {
+  const { register } = useFormContext();
 
   return (
-    <div className="map__filter">
-      {data.map(({ name, title }) => {
+    <form className="map__filter">
+      {data.map(({ value, title }) => {
         return (
-          <Checkbox key={name} name={name} register={register}>
+          <Checkbox
+            key={value}
+            name="mapObjects"
+            value={value}
+            register={register}
+          >
             <Typography size="big" color="black">
               {title}
             </Typography>
           </Checkbox>
         );
       })}
-    </div>
+    </form>
   );
 };
