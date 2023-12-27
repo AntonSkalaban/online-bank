@@ -1,23 +1,16 @@
 import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { getTransferFormData } from "store/selectors";
+import { useFormContext } from "react-hook-form";
 import { useGetCourse } from "hooks";
 import { Course } from "helpers";
-import { FormValues } from "type";
 import { Typography, Checkbox } from "components/UI";
 
-interface ExchangeBlockProps {
-  register: UseFormRegister<FormValues>;
-  errors: FieldErrors<FieldValues>;
-}
-export const ExchangeBlock: React.FC<ExchangeBlockProps> = ({
-  register,
-  errors,
-}) => {
-  const {
-    selectCards: { fromCard, toCard },
-  } = useSelector(getTransferFormData);
+export const ExchangeBlock = () => {
+  const { watch } = useFormContext();
+
+  const [fromCard, toCard] = watch([
+    "selectCards.fromCard",
+    "selectCards.toCard",
+  ]);
 
   const course = useGetCourse(toCard.currency, fromCard.currency);
 
@@ -29,12 +22,7 @@ export const ExchangeBlock: React.FC<ExchangeBlockProps> = ({
           {Course.getBankCourse(course, "sale").toFixed(3)} {fromCard.currency}
         </Typography>
       )}
-      <Checkbox
-        name="isCheckboxSubmit"
-        register={register}
-        errors={errors}
-        isRequired={true}
-      >
+      <Checkbox name="isCheckboxSubmit" isRequired={true}>
         <Typography>I agree with the courses *</Typography>
       </Checkbox>
     </>

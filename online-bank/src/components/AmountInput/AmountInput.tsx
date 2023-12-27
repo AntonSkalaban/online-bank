@@ -1,26 +1,17 @@
 import React from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import { useSelector } from "react-redux";
-import { getTransferFormData } from "store/selectors";
-import { Currency, FormValues } from "type";
-import { Typography } from "components/UI";
+import { useFormContext } from "react-hook-form";
+import { InputController } from "helpers";
+import { InputError, Typography } from "components/UI";
 import "./style.css";
 
-interface AmountInputProps {
-  currency: Currency;
-  register: UseFormRegister<FormValues>;
-  errors: FieldErrors<FormValues>;
-}
-
-export const AmountInput: React.FC<AmountInputProps> = ({
-  currency,
-  errors,
-  register,
-}) => {
+export const AmountInput = () => {
   const {
-    selectCards: { fromCard },
-  } = useSelector(getTransferFormData);
+    register,
+    formState: { errors },
+    watch,
+  } = useFormContext();
+
+  const [amount, fromCard] = watch(["amount", "selectCards.fromCard"]);
 
   return (
     <div className="amount-block">
@@ -28,6 +19,7 @@ export const AmountInput: React.FC<AmountInputProps> = ({
       <div className="amount__input-wrapper">
         <input
           className={"amount__input"}
+          value={InputController.getNumberValue(amount)}
           type="tel"
           {...register("amount", {
             required: "Enter the transfer amount",
@@ -38,21 +30,9 @@ export const AmountInput: React.FC<AmountInputProps> = ({
             },
           })}
         />
-        <div className="border_grey amount__currency">{currency}</div>
+        <div className="border_grey amount__currency">{fromCard.currency}</div>
       </div>
-      <ErrorMessage
-        errors={errors}
-        name="amount"
-        render={({ messages }) => {
-          return messages
-            ? Object.entries(messages).map(([type, message]) => (
-                <Typography color="red" key={type}>
-                  {message}
-                </Typography>
-              ))
-            : null;
-        }}
-      />
+      <InputError name={"amount"} errors={errors} />
     </div>
   );
 };

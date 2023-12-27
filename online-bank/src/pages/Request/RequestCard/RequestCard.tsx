@@ -3,8 +3,29 @@ import { CardCreationForm } from "./CardCreationForm/CardCreationForm";
 import { CardsList } from "./CardsList/CardsList";
 import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
 import "./style.css";
+import { FormProvider, useForm } from "react-hook-form";
+import { Currency, PaymentSystem } from "type";
+
+export interface DefCardFilter {
+  currency: Currency;
+  paymentSystem: PaymentSystem;
+  isVirtual: boolean;
+}
 
 export const RequestCard = () => {
+  const methods = useForm({
+    defaultValues: {
+      cardFilter: {
+        currency: "USD",
+        paymentSystem: "Visa",
+        isVirtual: false,
+      } as DefCardFilter,
+      isSubmit: false,
+    },
+    criteriaMode: "all",
+    mode: "onChange",
+  });
+
   return (
     <div className="page request-card">
       <div className="request-card__header">
@@ -24,13 +45,14 @@ export const RequestCard = () => {
         </Wrapper>
       </div>
       <Wrapper>
-        <section className="request-card__section">
-          <SectionHeader title="Specify card parameters" />
+        <SectionHeader title="Specify card parameters" />
+        <FormProvider {...methods}>
+          <form className="request-card__form">
+            <CardCreationForm />
 
-          <CardCreationForm />
-
-          <CardsList />
-        </section>
+            <CardsList />
+          </form>
+        </FormProvider>
       </Wrapper>
     </div>
   );

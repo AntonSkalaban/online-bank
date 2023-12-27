@@ -13,6 +13,7 @@ export const Transfer = () => {
             <GoBackBtn />
             Transfer between your accounts and cards
           </SectionHeader>
+
           <FetchingTransferForm />
         </section>
       </Wrapper>

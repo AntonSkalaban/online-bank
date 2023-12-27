@@ -1,23 +1,22 @@
 import React, { ReactNode } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface SelectOptionProps {
   name: string;
-  isChecked: boolean;
   value: string;
-  children?: ReactNode;
-  selectHandler: (val: Record<string, string>) => void;
+  children: ReactNode;
 }
 
 export const SelectOption: React.FC<SelectOptionProps> = ({
   name,
   value,
-  isChecked,
   children,
-  selectHandler,
 }) => {
-  const hanldeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    selectHandler({ [name]: e.target.value });
-  };
+  const { watch, register } = useFormContext();
+
+  const checkedValue = watch(name);
+
+  const isChecked = value === checkedValue;
 
   return (
     <li className={`select__item ${isChecked && "select__item_checked"}`}>
@@ -25,10 +24,8 @@ export const SelectOption: React.FC<SelectOptionProps> = ({
         <input
           className="list__input"
           type="radio"
-          name={name}
           value={value}
-          checked={isChecked}
-          onChange={hanldeChange}
+          {...register(name)}
         />
         {children}
       </label>

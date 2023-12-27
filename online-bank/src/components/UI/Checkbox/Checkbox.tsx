@@ -1,31 +1,26 @@
 import React, { ReactNode } from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import { FormValues } from "type";
-import { Typography } from "..";
+import { useFormContext } from "react-hook-form";
+import { InputError } from "..";
 import "./style.css";
 
 interface CheckboxProps {
   name: string;
-  label?: string;
   children?: ReactNode;
   value?: string;
-  register:
-    | UseFormRegister<FormValues>
-    | UseFormRegister<Record<string, string[]>>;
-  errors?: FieldErrors<FieldValues>;
   isRequired?: boolean;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   name,
-  label,
   children,
   value,
-  register,
-  errors,
   isRequired = false,
 }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <>
       <label className="checkbox">
@@ -37,23 +32,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           })}
         />
         <span className="checkmark"></span>
-        {label || children}
+        {children}
       </label>
-      {errors && (
-        <ErrorMessage
-          errors={errors}
-          name={name}
-          render={({ messages }) => {
-            return messages
-              ? Object.entries(messages).map(([type, message]) => (
-                  <Typography color="red" key={type}>
-                    {message}
-                  </Typography>
-                ))
-              : null;
-          }}
-        />
-      )}
+      {errors && <InputError name={name} errors={errors} />}
     </>
   );
 };

@@ -1,7 +1,7 @@
-import { DefaultCard } from "type";
 import { cards } from "const/cards";
+import { DefCardFilter } from "pages/index";
 
-export const getAvaliableCards = (filteredParams: DefaultCard) => {
+export const getAvaliableCards = (filteredParams: DefCardFilter) => {
   return cards.filter((card) => {
     return (
       card.currency === filteredParams.currency &&

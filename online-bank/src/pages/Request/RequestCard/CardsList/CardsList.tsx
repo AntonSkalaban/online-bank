@@ -1,18 +1,21 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { getCardParams, getRequestFormStatus } from "store/selectors";
 import { productAPI } from "services/api";
 import { getAvaliableCards, getCardPircture } from "helpers";
 import { DefaultCard } from "type";
 import { Button } from "components/UI";
 import "./style.css";
+import { DefCardFilter } from "../RequestCard";
+import { useFormContext } from "react-hook-form";
 
 export const CardsList = () => {
-  const cardParams = useSelector(getCardParams);
-  const isSubmit = useSelector(getRequestFormStatus);
-  const avaliableCards = getAvaliableCards(cardParams);
-
   const [requestCard] = productAPI.useAddProductsMutation();
+
+  const { watch } = useFormContext();
+
+  const filterParams = watch("cardFilter") as DefCardFilter;
+  const isSubmit = watch("isSubmit");
+
+  const avaliableCards = getAvaliableCards(filterParams);
 
   const handleClick = (card: DefaultCard) => {
     requestCard({ productType: "cards", body: card });
@@ -40,7 +43,7 @@ export const CardsList = () => {
 
               <div className="avaliable-card__info-container">
                 <p className="avaliable-card__title">
-                  {name} ,{currency}
+                  {name}, {currency}
                 </p>
                 <p className="avaliable-card__subtitle">
                   Currency: {currency}, Period: {period} month

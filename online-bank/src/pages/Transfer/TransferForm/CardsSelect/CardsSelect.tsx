@@ -1,7 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { getTransferFormData } from "store/selectors";
-import { useAction } from "hooks";
+import { useFormContext } from "react-hook-form";
 import { removeSelectCardFromOptions } from "helpers";
 import { UserCard } from "type";
 import { CardSelect } from "components";
@@ -13,17 +11,16 @@ interface CardsSelectProps {
 }
 
 export const CardsSelect: React.FC<CardsSelectProps> = ({ cards }) => {
-  const { updateTransferCards } = useAction();
+  const { watch, setValue } = useFormContext();
 
-  const {
-    selectCards: { fromCard, toCard },
-  } = useSelector(getTransferFormData);
+  const [fromCard, toCard] = watch([
+    "selectCards.fromCard",
+    "selectCards.toCard",
+  ]);
 
   const swapCards = () => {
-    updateTransferCards({
-      fromCard: toCard,
-      toCard: fromCard,
-    });
+    setValue("selectCards.fromCard", toCard);
+    setValue("selectCards.toCard", fromCard);
   };
 
   const fromCardOptios = removeSelectCardFromOptions(cards, toCard._id);
@@ -32,19 +29,15 @@ export const CardsSelect: React.FC<CardsSelectProps> = ({ cards }) => {
   return (
     <div className="cards-select-block">
       <CardSelect
-        name="fromCard"
+        name="selectCards.fromCard"
         label="From card"
         options={fromCardOptios}
-        selectCard={fromCard}
-        handleSelect={updateTransferCards}
       />
       <img className="swap-cards" src={Swap} onClick={swapCards} />
       <CardSelect
-        name="toCard"
+        name="selectCards.toCard"
         label="To card"
         options={toCardOptions}
-        selectCard={toCard}
-        handleSelect={updateTransferCards}
       />
     </div>
   );

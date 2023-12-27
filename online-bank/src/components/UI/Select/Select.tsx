@@ -1,27 +1,26 @@
 import React, { useRef, useState } from "react";
+import { UseFormRegister, useFormContext } from "react-hook-form";
 import { useOnClickOutside } from "hooks";
-import { UserCard } from "type";
+import { FormValues, UserCard } from "type";
+import { SelectOption } from "./SelectOption/SelectOption";
 import { SelectStringItem } from "./SelectItems/StringItem/StringItem";
 import { SelectCardItem } from "./SelectItems/CardItem/CardItem";
 import Checkmark from "assets/svg/checkmark.svg";
 import "./style.css";
-import { SelectOption } from "./SelectOption/SelectOption";
 
 interface SelectProps {
-  options: string[] | UserCard[];
   name: string;
-  checkedValue: string | UserCard;
-  selectHandler: (val: Record<string, string>) => void;
+  options: string[] | UserCard[];
 }
 
-export const Select: React.FC<SelectProps> = ({
-  options,
-  name,
-  checkedValue,
-  selectHandler,
-}) => {
-  const dropdownRef = useRef(null);
+export const Select: React.FC<SelectProps> = ({ name, options }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const dropdownRef = useRef(null);
+
+  const { watch } = useFormContext();
+
+  const checkedValue = watch(name);
 
   useOnClickOutside(dropdownRef, () => setIsOpen(false));
 
@@ -53,16 +52,9 @@ export const Select: React.FC<SelectProps> = ({
           <ul className="select__list">
             {options.map((option) => {
               const value = typeof option === "string" ? option : option._id;
-              const isChecked = value === checkedValue;
 
               return (
-                <SelectOption
-                  key={value}
-                  name={name}
-                  value={value}
-                  isChecked={isChecked}
-                  selectHandler={selectHandler}
-                >
+                <SelectOption key={value} name={name} value={value}>
                   {typeof option === "string" ? (
                     <SelectStringItem label={value} />
                   ) : (

@@ -1,8 +1,9 @@
-.creation-form__container{
+.creation-form__container {
     border-radius: 4px;
     background-color: rgba(27,39,51,.03);
     padding: 24px;
 }
+
 
 .creation-form__select-container {
     display: flex;
@@ -11,10 +12,7 @@
 }
 
 .creation-form__select-block {
-    padding-right: 20px;
-}
-
-.currency-select {
     width: 150px;
+    padding-right: 20px;
 }
 
