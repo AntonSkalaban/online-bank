@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
-import { withFetchingTranferData } from "hoc";
+import { withFetchingBetweenCardsSelect } from "hoc";
 import { useTransferFromCardToCard } from "hooks";
 import { UserCard } from "type";
 import { CardsSelect } from "./CardsSelect/CardsSelect";
@@ -12,26 +12,27 @@ import "./style.css";
 
 interface TransferFormProps {
   cards: UserCard[];
-  card: UserCard;
+  topUpCard?: UserCard;
 }
 
-export const TransferForm: React.FC<TransferFormProps> = ({ cards, card }) => {
+export const TransferBetweenForm: React.FC<TransferFormProps> = ({
+  cards,
+  topUpCard,
+}) => {
   const navigate = useNavigate();
 
   const methods = useForm({
     defaultValues: {
-      selectCards: {
-        fromCard: cards[0]._id !== card._id ? cards[0] : cards[1],
-        toCard: card,
-      },
+      fromCard: cards[0]._id !== topUpCard?._id ? cards[0] : cards[1],
+      toCard: topUpCard ?? cards[1],
       amount: "0",
     },
     criteriaMode: "all",
   });
 
   const [fromCard, toCard, amount] = methods.watch([
-    "selectCards.fromCard",
-    "selectCards.toCard",
+    "fromCard",
+    "toCard",
     "amount",
   ]);
 
@@ -43,6 +44,7 @@ export const TransferForm: React.FC<TransferFormProps> = ({ cards, card }) => {
 
   const onSubmit = () => {
     triggerTransfer();
+    alert("transfer success");
     navigate("/");
   };
 
@@ -63,5 +65,5 @@ export const TransferForm: React.FC<TransferFormProps> = ({ cards, card }) => {
   );
 };
 
-export const FetchingTransferForm =
-  withFetchingTranferData<UserCard>("cards")(TransferForm);
+export const FetchingTransferBetweenForm =
+  withFetchingBetweenCardsSelect("cards")(TransferBetweenForm);

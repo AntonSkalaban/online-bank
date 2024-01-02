@@ -1,5 +1,5 @@
 import React from "react";
-import { FetchingTransferForm } from "./TransferForm/TransferForm";
+import { FetchingTransferBetweenForm } from "./TransferForm/TransferBetweenForm";
 import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
 import "./style.css";
 
@@ -14,7 +14,7 @@ export const Transfer = () => {
             Transfer between your accounts and cards
           </SectionHeader>
 
-          <FetchingTransferForm />
+          <FetchingTransferBetweenForm />
         </section>
       </Wrapper>
     </div>

@@ -11,7 +11,7 @@ export const AmountInput = () => {
     watch,
   } = useFormContext();
 
-  const [amount, fromCard] = watch(["amount", "selectCards.fromCard"]);
+  const [amount, fromCard] = watch(["amount", "fromCard"]);
 
   return (
     <div className="amount-block">

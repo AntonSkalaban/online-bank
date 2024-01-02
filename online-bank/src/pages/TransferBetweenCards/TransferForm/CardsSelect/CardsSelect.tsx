@@ -13,14 +13,11 @@ interface CardsSelectProps {
 export const CardsSelect: React.FC<CardsSelectProps> = ({ cards }) => {
   const { watch, setValue } = useFormContext();
 
-  const [fromCard, toCard] = watch([
-    "selectCards.fromCard",
-    "selectCards.toCard",
-  ]);
+  const [fromCard, toCard] = watch(["fromCard", "toCard"]);
 
   const swapCards = () => {
-    setValue("selectCards.fromCard", toCard);
-    setValue("selectCards.toCard", fromCard);
+    setValue("fromCard", toCard);
+    setValue("toCard", fromCard);
   };
 
   const fromCardOptios = removeSelectCardFromOptions(cards, toCard._id);
@@ -28,17 +25,9 @@ export const CardsSelect: React.FC<CardsSelectProps> = ({ cards }) => {
 
   return (
     <div className="cards-select-block">
-      <CardSelect
-        name="selectCards.fromCard"
-        label="From card"
-        options={fromCardOptios}
-      />
+      <CardSelect name="fromCard" label="From card" options={fromCardOptios} />
       <img className="swap-cards" src={Swap} onClick={swapCards} />
-      <CardSelect
-        name="selectCards.toCard"
-        label="To card"
-        options={toCardOptions}
-      />
+      <CardSelect name="toCard" label="To card" options={toCardOptions} />
     </div>
   );
 };

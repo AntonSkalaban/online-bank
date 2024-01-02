@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { UseFormRegister, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { useOnClickOutside } from "hooks";
-import { FormValues, UserCard } from "type";
+import { UserCard } from "type";
 import { SelectOption } from "./SelectOption/SelectOption";
 import { SelectStringItem } from "./SelectItems/StringItem/StringItem";
 import { SelectCardItem } from "./SelectItems/CardItem/CardItem";
@@ -11,14 +11,24 @@ import "./style.css";
 interface SelectProps {
   name: string;
   options: string[] | UserCard[];
+  optionType?: "card" | "string";
 }
 
-export const Select: React.FC<SelectProps> = ({ name, options }) => {
+const items = {
+  string: (label: string) => <SelectStringItem label={label} />,
+  card: (card: UserCard) => <SelectCardItem card={card} />,
+};
+
+export const Select: React.FC<SelectProps> = ({
+  name,
+  options,
+  optionType = "string",
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const dropdownRef = useRef(null);
-
   const { watch } = useFormContext();
+
+  const dropdownRef = useRef(null);
 
   const checkedValue = watch(name);
 
@@ -32,11 +42,7 @@ export const Select: React.FC<SelectProps> = ({ name, options }) => {
     <div className="select" ref={dropdownRef}>
       <div className="border_grey">
         <div className="select__toggle" onClick={toggle}>
-          {typeof checkedValue === "string" ? (
-            <SelectStringItem label={checkedValue} />
-          ) : (
-            <SelectCardItem card={checkedValue} />
-          )}
+          {items[optionType](checkedValue)}
           <span
             className={
               "dropdown__checkmark " +
@@ -51,15 +57,19 @@ export const Select: React.FC<SelectProps> = ({ name, options }) => {
         <div className="select__body">
           <ul className="select__list">
             {options.map((option) => {
-              const value = typeof option === "string" ? option : option._id;
+              const isOptionString = optionType === "string";
 
               return (
-                <SelectOption key={value} name={name} value={value}>
-                  {typeof option === "string" ? (
-                    <SelectStringItem label={value} />
-                  ) : (
-                    <SelectCardItem card={option as UserCard} />
-                  )}
+                <SelectOption
+                  key={
+                    isOptionString
+                      ? (option as string)
+                      : (option as UserCard)._id
+                  }
+                  name={name}
+                  value={option}
+                >
+                  {items[optionType](checkedValue)}
                 </SelectOption>
               );
             })}

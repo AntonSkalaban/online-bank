@@ -31,6 +31,7 @@ export const App = () => {
           />
         </Route>
         <Route path="transfer" element={<Transfer />} />
+        <Route path="transfer2" element={<Transfer />} />
         <Route path="map" element={<Map />} />
       </Route>
     </Routes>

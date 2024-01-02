@@ -1,9 +1,11 @@
 import React, { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
+import { UserCard } from "type";
 
 interface SelectOptionProps {
   name: string;
-  value: string;
+  value: string | UserCard;
+
   children: ReactNode;
 }
 
@@ -12,11 +14,14 @@ export const SelectOption: React.FC<SelectOptionProps> = ({
   value,
   children,
 }) => {
-  const { watch, register } = useFormContext();
+  const { watch, setValue } = useFormContext();
 
-  const checkedValue = watch(name);
+  const checkedValue = watch(name) as string | UserCard;
 
-  const isChecked = value === checkedValue;
+  const isChecked =
+    typeof value === "string"
+      ? value === checkedValue
+      : (value as UserCard)._id === (checkedValue as UserCard)._id;
 
   return (
     <li className={`select__item ${isChecked && "select__item_checked"}`}>
@@ -24,8 +29,12 @@ export const SelectOption: React.FC<SelectOptionProps> = ({
         <input
           className="list__input"
           type="radio"
-          value={value}
-          {...register(name)}
+          value={
+            typeof value === "string"
+              ? (value as string)
+              : (value as UserCard)._id
+          }
+          onChange={() => setValue(name, value)}
         />
         {children}
       </label>

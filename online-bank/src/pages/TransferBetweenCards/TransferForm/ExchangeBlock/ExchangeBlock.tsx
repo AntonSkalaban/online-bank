@@ -7,10 +7,7 @@ import { Typography, Checkbox } from "components/UI";
 export const ExchangeBlock = () => {
   const { watch } = useFormContext();
 
-  const [fromCard, toCard] = watch([
-    "selectCards.fromCard",
-    "selectCards.toCard",
-  ]);
+  const [fromCard, toCard] = watch(["fromCard", "toCard"]);
 
   const course = useGetCourse(toCard.currency, fromCard.currency);
 

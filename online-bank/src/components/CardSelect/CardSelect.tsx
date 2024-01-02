@@ -16,7 +16,7 @@ export const CardSelect: React.FC<CardSelectProps> = ({
   return (
     <div className="cards-select">
       <Typography text={label} />
-      <Select options={options as UserCard[]} name={name} />
+      <Select optionType="card" options={options as UserCard[]} name={name} />
     </div>
   );
 };
