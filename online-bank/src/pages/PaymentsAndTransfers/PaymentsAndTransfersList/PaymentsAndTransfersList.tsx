@@ -24,12 +24,14 @@ export const PaymentsAndTransfersList: React.FC<
                   <use href={`${Sprites}#${imgId}`} />
                 </svg>
               </div>
-              <Typography
-                color="black"
-                size="big"
-                weight="strong"
-                text={name}
-              />
+              <div className="payments-and-transfers__text-container">
+                <Typography
+                  color="black"
+                  size="big"
+                  weight="strong"
+                  text={name}
+                />
+              </div>
             </NavLink>
           </li>
         );
