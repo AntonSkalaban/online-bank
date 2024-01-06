@@ -7,7 +7,7 @@ export const btns: ICardButton[] = [
   {
     title: "Top up",
     img: Plus,
-    route: "transfer/top-up",
+    route: "transfer/between-my-cards",
   },
   { title: "Transfer", img: Arrow, route: "/payments-and-transfers/transfer" },
   { title: "Payments", img: Card, route: "/payments-and-transfers/payments" },
