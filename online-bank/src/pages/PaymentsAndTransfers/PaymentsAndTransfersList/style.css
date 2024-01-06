@@ -16,8 +16,8 @@
 }
 
 .payments-and-transfers__img-container {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
 
     display: flex;
@@ -31,5 +31,15 @@
 
 .transfers__img-container {
     background-color: #e2f9f9;
+}
+
+.payments-and-transfers__svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+
+    width: 36px;
+    height: 36px;
 }
 

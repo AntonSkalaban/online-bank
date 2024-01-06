@@ -4,3 +4,4 @@ export * from "./Request/RequestCard/RequestCard";
 export * from "./Products/Card/Card/Card";
 export * from "./TransferBetweenCards/Transfer";
 export * from "./Map/Map";
+export * from "./TransferToOtherCard/TransferToOtherCard";

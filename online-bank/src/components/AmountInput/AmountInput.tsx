@@ -14,11 +14,11 @@ export const AmountInput = () => {
   const [amount, fromCard] = watch(["amount", "fromCard"]);
 
   return (
-    <div className="amount-block">
+    <div className="input-block">
       <Typography text="Amount of payment *" />
-      <div className="amount__input-wrapper">
+      <div className="input-wrapper">
         <input
-          className={"amount__input"}
+          className={"amount__input tel-input"}
           value={InputController.getNumberValue(amount)}
           type="tel"
           {...register("amount", {

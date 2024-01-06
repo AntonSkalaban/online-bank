@@ -69,7 +69,8 @@ export const Select: React.FC<SelectProps> = ({
                   name={name}
                   value={option}
                 >
-                  {items[optionType](checkedValue)}
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                  {items[optionType](option as any)}
                 </SelectOption>
               );
             })}

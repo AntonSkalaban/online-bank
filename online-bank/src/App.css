@@ -75,6 +75,28 @@ body {
 }
 
 
+.input-block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-wrapper{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #1b2733e6;
+}
+
+.tel-input:focus{
+    outline: none;
+}
+
+
 @media (max-width: 1210px) {
     .grid-top , .grid-2clmn, .grid-3clmn {
         grid-template-columns: 640px;

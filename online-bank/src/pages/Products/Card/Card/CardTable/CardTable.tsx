@@ -27,7 +27,7 @@ export const CardTable: React.FC<CardTableProps> = ({ card }) => {
     <div className="grid grid-2clmn">
       <div className="card-page__card-table grid-main">
         <CardTableRow
-          label={"Card number"}
+          label="Card number"
           value={
             isNumberHide ? ProductNumber.showExtremeNumbers(number) : number
           }

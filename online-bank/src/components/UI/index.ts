@@ -10,3 +10,4 @@ export * from "./GoBack/GoBack";
 export * from "./Checkbox/Checkbox";
 export * from "./Select/Select";
 export * from "./InputError/InputError";
+export * from "./TranferPageLayout/TranferPageLayout";

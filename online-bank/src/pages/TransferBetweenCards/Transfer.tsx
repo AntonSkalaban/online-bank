@@ -1,22 +1,11 @@
 import React from "react";
 import { FetchingTransferBetweenForm } from "./TransferForm/TransferBetweenForm";
-import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
-import "./style.css";
+import { TranferPageLayout } from "components/UI";
 
 export const Transfer = () => {
   return (
-    <div className="page transfer-page">
-      <Wrapper>
-        <section>
-          <SectionHeader size="big">
-            {" "}
-            <GoBackBtn />
-            Transfer between your accounts and cards
-          </SectionHeader>
-
-          <FetchingTransferBetweenForm />
-        </section>
-      </Wrapper>
-    </div>
+    <TranferPageLayout title={"Transfer between your accounts and cards"}>
+      <FetchingTransferBetweenForm />
+    </TranferPageLayout>
   );
 };

@@ -6,3 +6,5 @@ export * from "./Products/Products";
 export * from "./Services/Services";
 export * from "./CardSelect/CardSelect";
 export * from "./AmountInput/AmountInput";
+export * from "./CardInput/CardInput";
+export * from "./PhoneInput/PhoneInput";
