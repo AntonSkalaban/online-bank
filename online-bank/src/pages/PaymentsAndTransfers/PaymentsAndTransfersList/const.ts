@@ -1,4 +1,8 @@
-export const data = {
+type DataType = {
+  [key: string]: { name: string; imgId: string; path: string }[];
+};
+
+export const data: DataType = {
   payments: [{ name: "ERIP", imgId: "transfer-between", path: "ERIP" }],
   transfers: [
     {

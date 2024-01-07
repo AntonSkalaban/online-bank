@@ -6,8 +6,9 @@ import Sprites from "assets/svg/transfer.svg";
 import "./style.css";
 
 interface PaymentsAndTransfersListProps {
-  listCategory: "payments" | "transfers";
+  listCategory: "transfers" | "payments";
 }
+
 export const PaymentsAndTransfersList: React.FC<
   PaymentsAndTransfersListProps
 > = ({ listCategory }) => {

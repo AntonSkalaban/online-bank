@@ -9,6 +9,6 @@ export const btns: ICardButton[] = [
     img: Plus,
     route: "transfer/between-my-cards",
   },
-  { title: "Transfer", img: Arrow, route: "/payments-and-transfers/transfer" },
+  { title: "Transfer", img: Arrow, route: "/payments-and-transfers/transfers" },
   { title: "Payments", img: Card, route: "/payments-and-transfers/payments" },
 ];
