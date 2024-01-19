@@ -25,7 +25,7 @@ export const AmountInput = () => {
             required: "Enter the transfer amount",
             validate: {
               enoughFunds: (value) =>
-                +value < fromCard.balance || "Insufficient funds",
+                +value <= fromCard.balance || "Insufficient funds",
               moreThenTwo: (value) => +value >= 2 || "More than 2",
             },
           })}

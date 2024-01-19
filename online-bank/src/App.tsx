@@ -4,6 +4,7 @@ import { Layout } from "./components";
 import {
   Main,
   PaymentsAndTransfers,
+  Check,
   RequestCard,
   FetchingCardPage,
   Transfer,
@@ -34,7 +35,7 @@ export const App = () => {
         <Route path="transfer">
           <Route path={":category"} element={<Transfer />} />
         </Route>
-
+        <Route path="check" element={<Check />} />
         <Route path="map" element={<Map />} />
       </Route>
     </Routes>

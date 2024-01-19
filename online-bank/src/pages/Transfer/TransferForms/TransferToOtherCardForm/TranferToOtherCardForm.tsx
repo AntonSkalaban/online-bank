@@ -10,20 +10,27 @@ import { Button, Select, Typography } from "components/UI";
 interface TransferToOtherCardFormProps {
   products: UserCard[];
 }
+interface FormValues {
+  numberType: string;
+  cardNumber: string;
+  phoneNumber: string;
+  fromCard: UserCard;
+  amount: string;
+}
 
 export const TransferToOtherCardForm: React.FC<
   TransferToOtherCardFormProps
 > = ({ products }) => {
   const navigate = useNavigate();
-  const { transferTo } = useParams();
+  const { category } = useParams();
 
   const { triggerTransfer } = useTransfer();
 
-  const isTransferToClient = transferTo === "to-bank-client";
+  const isTransferToClient = category === "to-bank-client";
 
   const methods = useForm({
     defaultValues: {
-      numberType: "Card",
+      numberType: "card",
       cardNumber: "",
       phoneNumber: "",
       fromCard: products[0],
@@ -32,16 +39,24 @@ export const TransferToOtherCardForm: React.FC<
     criteriaMode: "all",
   });
 
-  const [numberType, fromCard, amount] = methods.watch([
-    "numberType",
-    "fromCard",
-    "amount",
-  ]);
+  const numberType = methods.watch("numberType");
 
-  const onSubmit = () => {
+  const onSubmit = (data: FormValues) => {
+    const { fromCard, amount, phoneNumber, cardNumber } = data;
+
+    const checkData = {
+      date: new Date(),
+      fromCard: fromCard.number,
+      transferToType: numberType,
+      toNumber: phoneNumber || cardNumber,
+      amount,
+    };
+
     triggerTransfer(fromCard, isTransferToClient ? +amount : +amount + 2);
-    alert("transfer success");
-    navigate("/");
+
+    navigate("/check", {
+      state: checkData,
+    });
   };
 
   return (
@@ -59,9 +74,9 @@ export const TransferToOtherCardForm: React.FC<
           Find by
         </Typography>
 
-        <Select name="numberType" options={["Card", "Phone"]} />
+        <Select name="numberType" options={["card", "phone"]} />
 
-        {numberType === "Card" ? <CardInput /> : <PhoneInput />}
+        {numberType === "card" ? <CardInput /> : <PhoneInput />}
 
         <CardSelect name="fromCard" label="Select card" options={products} />
 
