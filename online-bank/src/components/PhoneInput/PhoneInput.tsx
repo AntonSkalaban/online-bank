@@ -11,7 +11,7 @@ export const PhoneInput = () => {
     watch,
   } = useFormContext();
 
-  const phoneNumber = InputController.formatPhoneValue(watch("phoneNumber"));
+  const value = InputController.formatPhoneValue(watch("topUpNumber"));
 
   return (
     <div className="input-block">
@@ -19,10 +19,10 @@ export const PhoneInput = () => {
       <div className="input-wrapper">
         <input
           className="card__input tel-input"
-          value={phoneNumber}
+          value={value}
           placeholder="(XX) XXX-XX-XX"
           type="tel"
-          {...register("phoneNumber", {
+          {...register("topUpNumber", {
             required: "Enter phone number",
             pattern: {
               value: /\(\d{2}\) \d{3}-\d{2}-\d{2}/,
@@ -31,7 +31,7 @@ export const PhoneInput = () => {
           })}
         />
       </div>
-      <InputError name="phoneNumber" errors={errors} />
+      <InputError name="topUpNumber" errors={errors} />
     </div>
   );
 };

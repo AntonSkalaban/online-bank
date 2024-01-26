@@ -1,3 +1,5 @@
+import { UserCard } from "./userProducts";
+
 export type FormValues = Record<string, string | number | boolean>;
 export interface ICardButton {
   title: string;
@@ -26,4 +28,16 @@ export interface ExchangeInfo {
 export interface Tab {
   title: string;
   name: string;
+}
+
+export interface OperationsData {
+  _id: string;
+  name: string;
+  date: Date;
+  category: string;
+  topUpBy: "card" | "phone";
+  fromCard: UserCard;
+  topUpNumber: string;
+  amount: string;
+  isFavorite?: boolean;
 }

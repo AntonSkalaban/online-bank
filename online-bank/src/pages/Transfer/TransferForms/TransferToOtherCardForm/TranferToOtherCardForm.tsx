@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { withFetchingProducts } from "hoc";
 import { useTransfer } from "hooks";
-import { UserCard } from "type";
+import { OperationsData, UserCard } from "type";
 import { AmountInput, CardInput, CardSelect, PhoneInput } from "components";
 import { Button, Select, Typography } from "components/UI";
 
@@ -11,9 +11,8 @@ interface TransferToOtherCardFormProps {
   products: UserCard[];
 }
 interface FormValues {
-  numberType: string;
-  cardNumber: string;
-  phoneNumber: string;
+  topUpBy: string;
+  topUpNumber: string;
   fromCard: UserCard;
   amount: string;
 }
@@ -22,40 +21,34 @@ export const TransferToOtherCardForm: React.FC<
   TransferToOtherCardFormProps
 > = ({ products }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { category } = useParams();
 
   const { triggerTransfer } = useTransfer();
 
-  const isTransferToClient = category === "to-bank-client";
-
   const methods = useForm({
-    defaultValues: {
-      numberType: "card",
-      cardNumber: "",
-      phoneNumber: "",
-      fromCard: products[0],
-      amount: "",
-    },
+    defaultValues: (location.state as OperationsData)
+      ? { ...location.state, amount: "" }
+      : {
+          topUpBy: "card",
+          topUpNumber: "",
+          fromCard: products[0],
+          amount: "",
+        },
     criteriaMode: "all",
   });
 
-  const numberType = methods.watch("numberType");
+  const topUpBy = methods.watch("topUpBy");
+  const isTransferToClient = category === "to-bank-client";
 
   const onSubmit = (data: FormValues) => {
-    const { fromCard, amount, phoneNumber, cardNumber } = data;
-
-    const checkData = {
-      date: new Date(),
-      fromCard: fromCard.number,
-      transferToType: numberType,
-      toNumber: phoneNumber || cardNumber,
-      amount,
-    };
-
-    triggerTransfer(fromCard, isTransferToClient ? +amount : +amount + 2);
+    triggerTransfer(
+      data.fromCard,
+      isTransferToClient ? +data.amount : +data.amount + 2
+    );
 
     navigate("/check", {
-      state: checkData,
+      state: { date: new Date(), category, ...data },
     });
   };
 
@@ -74,9 +67,9 @@ export const TransferToOtherCardForm: React.FC<
           Find by
         </Typography>
 
-        <Select name="numberType" options={["card", "phone"]} />
+        <Select name="topUpBy" options={["card", "phone"]} />
 
-        {numberType === "card" ? <CardInput /> : <PhoneInput />}
+        {topUpBy === "card" ? <CardInput /> : <PhoneInput />}
 
         <CardSelect name="fromCard" label="Select card" options={products} />
 

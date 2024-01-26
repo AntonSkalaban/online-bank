@@ -8,31 +8,6 @@
     margin: 0 auto;
 }
 
-.check {
-    border: 1px solid black;
-    padding: 15px;
-    margin: 20px 0;
-}
-
-.check__bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-bottom: 10px;
-}
-
-.check__stamp {
-    width: 170px;
-    border: 4px solid var(--grey-color);
-    padding: 15px;
-
-    color: var(--grey-text-color);
-}
-
-.check__paid {
-    text-align: center;
-}
 
 .check__btns-container {
     display: flex;

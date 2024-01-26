@@ -11,6 +11,7 @@ import {
   Map,
 } from "./pages";
 import "./App.css";
+import { Favorite } from "pages/Favorite/Favorite";
 
 export const App = () => {
   return (
@@ -32,6 +33,7 @@ export const App = () => {
           />
         </Route>
 
+        <Route path="favorite" element={<Favorite />} />
         <Route path="transfer">
           <Route path={":category"} element={<Transfer />} />
         </Route>

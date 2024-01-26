@@ -25,8 +25,8 @@ export const productAPI = createApi({
     getProduct: build.query<
       UserCard | UserCredit,
       {
-        productType?: string;
-        id?: string;
+        productType: string;
+        id: string;
       }
     >({
       query: ({ productType, id }) => "/" + productType + "/" + id,

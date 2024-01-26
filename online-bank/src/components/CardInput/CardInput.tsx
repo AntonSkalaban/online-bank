@@ -11,7 +11,7 @@ export const CardInput = () => {
     watch,
   } = useFormContext();
 
-  const cardNumber = InputController.formatCardValue(watch("cardNumber"));
+  const value = InputController.formatCardValue(watch("topUpNumber"));
 
   return (
     <div className="input-block">
@@ -19,10 +19,10 @@ export const CardInput = () => {
       <div className="input-wrapper">
         <input
           className="card__input tel-input"
-          value={cardNumber}
+          value={value}
           placeholder="XXXX XXXX XXXX XXXX"
           type="tel"
-          {...register("cardNumber", {
+          {...register("topUpNumber", {
             required: "Enter card number",
             pattern: {
               value: /^\d{4} \d{4} \d{4} \d{4}$/,
@@ -31,7 +31,7 @@ export const CardInput = () => {
           })}
         />
       </div>
-      <InputError name="cardNumber" errors={errors} />
+      <InputError name="topUpNumber" errors={errors} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Plus from "assets/svg/plus-in-circle.svg";
 
 export const btns: ICardButton[] = [
   { title: "Order a product", img: Plus, route: "" },
-  { title: "Selected payments", img: Favorite, route: "" },
+  { title: "Favorite payments", img: Favorite, route: "/favorite" },
 ];
 
 export const tabs = [

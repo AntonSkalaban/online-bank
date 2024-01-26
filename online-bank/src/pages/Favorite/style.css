@@ -1,0 +1,16 @@
+.favorite-page__main {
+    margin-left: 40px;
+    width: 940px;
+}
+
+.favorite-page__container {
+    display: flex;
+}
+
+
+@media (max-width: 1210px) {
+    .favorite-page__main{
+        width: 640px;
+        margin: 0 auto;
+    }
+}

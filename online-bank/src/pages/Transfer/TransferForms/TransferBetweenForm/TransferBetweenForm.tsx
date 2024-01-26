@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { withFetchingBetweenCardsSelect } from "hoc";
 import { useTransferFromCardToCard } from "hooks";
-import { UserCard } from "type";
+import { OperationsData, UserCard } from "type";
 import { CardsSelect } from "./CardsSelect/CardsSelect";
 import { ExchangeBlock } from "./ExchangeBlock/ExchangeBlock";
 import { AmountInput } from "components";
@@ -20,13 +20,23 @@ export const TransferBetweenForm: React.FC<TransferFormProps> = ({
   topUpCard,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { category } = useParams();
 
   const methods = useForm({
-    defaultValues: {
-      fromCard: cards[0]._id !== topUpCard?._id ? cards[0] : cards[1],
-      toCard: topUpCard ?? cards[1],
-      amount: "0",
-    },
+    defaultValues: (location.state as OperationsData)
+      ? {
+          fromCard: location.state.fromCard,
+          toCard: cards.find(
+            ({ number }) => number === location.state.topUpNumber
+          ) as UserCard,
+          amount: "0",
+        }
+      : {
+          fromCard: cards[0]._id !== topUpCard?._id ? cards[0] : cards[1],
+          toCard: topUpCard ?? cards[1],
+          amount: "0",
+        },
     criteriaMode: "all",
   });
 
@@ -44,8 +54,17 @@ export const TransferBetweenForm: React.FC<TransferFormProps> = ({
 
   const onSubmit = () => {
     triggerTransfer();
-    alert("transfer success");
-    navigate("/");
+
+    navigate("/check", {
+      state: {
+        date: new Date(),
+        category,
+        fromCard,
+        topUpBy: "card",
+        topUpNumber: toCard.number,
+        amount,
+      },
+    });
   };
 
   return (
