@@ -1,0 +1,14 @@
+.request-credit__dropdown {
+    margin-top: 20px;
+}
+.request-credit__dropdown-item {
+    color:var( --light-green-color);
+    list-style-type: disc;
+
+    
+    margin: 0 0 5px 14px;
+}
+
+.request-credit__dropdown-item span {
+    color: black;
+}

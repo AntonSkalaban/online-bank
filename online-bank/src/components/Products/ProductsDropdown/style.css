@@ -1,0 +1,8 @@
+.products-dropdown__wrapper {
+    position: relative;
+    border-radius: 12px;
+    background:var(--white-color);
+    box-shadow: var(--block-shadow);
+
+    padding: 38px 32px 30px;
+}    

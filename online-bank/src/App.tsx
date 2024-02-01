@@ -7,6 +7,7 @@ import {
   History,
   Check,
   RequestCard,
+  RequestCredit,
   FetchingCardPage,
   Transfer,
   Map,
@@ -26,6 +27,7 @@ export const App = () => {
         />
         <Route path="request">
           <Route path="cards" element={<RequestCard />} />
+          <Route path="credits" element={<RequestCredit />} />
         </Route>
         <Route path="products">
           <Route path=":productType/:id" element={<FetchingCardPage />} />

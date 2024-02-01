@@ -1,0 +1,9 @@
+.dropdown__header_border {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.dropdown__header_border:hover {
+    opacity: 0.7;
+}

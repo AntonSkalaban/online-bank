@@ -1,0 +1,27 @@
+.select {
+    width: 100%;
+    position: relative;
+}
+
+.border_grey {
+    border: solid 1px #8c96b1cc;
+    border-radius: 4px;
+}
+
+.border_red {
+    border: solid 1px red;
+    border-radius: 4px;
+}
+
+.select__toggle {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px 12px 6px 6px;
+
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+
+    cursor: pointer;
+}

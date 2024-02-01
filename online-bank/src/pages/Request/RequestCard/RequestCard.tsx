@@ -1,10 +1,10 @@
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { Currency, PaymentSystem } from "type";
 import { CardCreationForm } from "./CardCreationForm/CardCreationForm";
 import { CardsList } from "./CardsList/CardsList";
 import { GoBackBtn, SectionHeader, Wrapper } from "components/UI";
 import "./style.css";
-import { FormProvider, useForm } from "react-hook-form";
-import { Currency, PaymentSystem } from "type";
 
 export interface DefCardFilter {
   currency: Currency;

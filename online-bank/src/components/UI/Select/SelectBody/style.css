@@ -1,0 +1,16 @@
+
+.select__body {
+    min-width: 120px;
+    width: 100%;
+    height: auto;
+
+    position: absolute;
+    left: 0;
+    right: -17px;
+    
+    border-radius: 4px;
+    box-shadow: 0 8px 12px 0 #1b273326;
+    background-color: #fff;
+    border: solid 1px #8c96b14d;
+    z-index: 20;
+}

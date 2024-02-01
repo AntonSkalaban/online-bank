@@ -1,6 +1,6 @@
 import React from "react";
 import { products } from "./const";
-import { Dropdown } from "./Dropdown/Dropdown";
+import { ProductsDropdown } from "./ProductsDropdown/ProductsDropdown";
 import "./style.css";
 
 interface ProductsProps {
@@ -11,9 +11,11 @@ export const Products: React.FC<ProductsProps> = ({ showAll = true }) => {
     <section className="products">
       {products.map(({ name, type }, index) => {
         if (showAll) {
-          return <Dropdown key={name} name={name} type={type} />;
+          return <ProductsDropdown key={name} title={name} type={type} />;
         }
-        return index < 1 && <Dropdown key={name} name={name} type={type} />;
+        return (
+          index < 1 && <ProductsDropdown key={name} title={name} type={type} />
+        );
       })}
     </section>
   );

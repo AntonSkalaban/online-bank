@@ -1,11 +1,9 @@
-.dropdown {
-    position: relative;
-    border-radius: 12px;
-    background:var(--white-color);
-    box-shadow: var(--block-shadow);
+.border-dropdown {
+    border-top: var(--grey-border);
+    border-bottom: var(--grey-border);
 
-    padding: 38px 32px 30px;
-}    
+    padding: 5px 0 5px 0;
+}
 
 .dropdown__header {
     display: flex;
@@ -22,12 +20,6 @@
     cursor: pointer;
 } 
 
-.dropdown__checkmark {
-    transition: all 0.25s ease-in-out;
-}
-.dropdown__checkmark_active {
-    transform: rotate(180deg);
-}
 .dropdown__title {
     font-size: 22px;
     font-family: SBSansDisplay, SBSans, Arial, Helvetica, sans-serif;
