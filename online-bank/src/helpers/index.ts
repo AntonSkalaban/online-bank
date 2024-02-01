@@ -7,3 +7,4 @@ export * from "./InputController";
 export * from "./removeSelectCardFromOptions";
 export * from "./Course";
 export * from "./CustomeArray";
+export * from "./Text";

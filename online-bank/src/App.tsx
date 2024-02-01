@@ -4,6 +4,7 @@ import { Layout } from "./components";
 import {
   Main,
   PaymentsAndTransfers,
+  History,
   Check,
   RequestCard,
   FetchingCardPage,
@@ -18,6 +19,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
+        <Route path="history" element={<History />} />
         <Route
           path="payments-and-transfers/:category"
           element={<PaymentsAndTransfers />}

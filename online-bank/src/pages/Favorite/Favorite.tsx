@@ -9,6 +9,7 @@ export const Favorite = () => {
   const { data, isFetching } = historyAPI.useGetHistoryQuery("favorite");
 
   if (!data) return;
+  if (isFetching) return;
 
   return (
     <div className="page favorite-page">

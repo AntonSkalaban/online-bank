@@ -7,13 +7,14 @@ export const historyAPI = createApi({
   reducerPath: "historyAPI",
   tagTypes: ["history"],
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL + "/operations",
+    baseUrl: import.meta.env.VITE_API_URL + "/transfers",
   }),
   endpoints: (build) => ({
     getHistory: build.query<OperationsData[], PaymentType | void>({
       query: (paymentType) => "/" + paymentType,
       providesTags: () => ["history"],
     }),
+
     // getProduct: build.query<
     //   UserCard | UserCredit,
     //   {

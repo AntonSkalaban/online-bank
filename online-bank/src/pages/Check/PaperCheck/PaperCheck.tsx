@@ -2,20 +2,20 @@ import React from "react";
 import { Typography } from "components/UI";
 import { OperationsData } from "type";
 import "./style.css";
+import { MyDate } from "helpers/validityToMMYY";
 
 interface PaperCheckPops {
-  data: Omit<OperationsData, "_id">;
+  data: Partial<OperationsData>;
 }
 
 export const PaperCheck: React.FC<PaperCheckPops> = ({ data }) => {
   const { date, fromCard, topUpNumber, topUpBy, amount } = data;
+  if (!date || !fromCard) return;
 
   return (
     <div className="check">
       <Typography>
-        {`${date.getHours()}:${date.getMinutes()} ${
-          +date.getMonth() + 1
-        }.${date.getFullYear()}`}
+        {MyDate.getTime(date)} {MyDate.getDDMMYYFormat(date)}
         <br />
         From card: {fromCard.number}
         <br />

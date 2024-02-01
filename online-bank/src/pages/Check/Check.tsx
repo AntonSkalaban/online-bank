@@ -11,14 +11,14 @@ export const Check = () => {
 
   const [addToHistory] = historyAPI.useAddHistoryMutation();
 
+  const operationsData = location.state as Partial<OperationsData>;
+
   useEffect(() => {
     return () => {
-      addToHistory(operationsData);
+      if (!operationsData._id) addToHistory(operationsData);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const operationsData = location.state as Omit<OperationsData, "_id">;
 
   const hanldeClick = () => {
     operationsData.isFavorite = true;

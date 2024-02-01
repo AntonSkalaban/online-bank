@@ -5,6 +5,7 @@ import "./style.css";
 const pages = [
   { name: "Main", path: "" },
   { name: "Payments and transfers", path: "payments-and-transfers/payments" },
+  { name: "History", path: "history" },
 ];
 
 export const Nav = () => {

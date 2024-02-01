@@ -1,3 +1,4 @@
+import { Currency } from "./defaultProducts";
 import { UserCard } from "./userProducts";
 
 export type FormValues = Record<string, string | number | boolean>;
@@ -33,7 +34,7 @@ export interface Tab {
 export interface OperationsData {
   _id: string;
   name: string;
-  date: Date;
+  date: string;
   category: string;
   topUpBy: "card" | "phone";
   fromCard: UserCard;
