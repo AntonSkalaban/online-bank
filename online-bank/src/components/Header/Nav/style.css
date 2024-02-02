@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 
-.nav__link_active {
+.nav__link_active, .nav__link:hover {
     color:  black;
 }
 

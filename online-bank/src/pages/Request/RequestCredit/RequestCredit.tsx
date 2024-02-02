@@ -22,6 +22,7 @@ export const RequestCredit = () => {
               </Typography>
             </div>
             <RequirementsDropdown />
+            <div className="request-credit__card"></div>
           </div>
         </div>
       </Wrapper>

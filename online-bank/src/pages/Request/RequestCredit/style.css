@@ -10,7 +10,7 @@
     width: 600px;
 }
 
-.credit-item {
+.request-credit__card {
     background: linear-gradient(to right, rgb(170, 170, 170), rgb(35, 219, 173));
     color: rgb(255, 255, 255);
 }
