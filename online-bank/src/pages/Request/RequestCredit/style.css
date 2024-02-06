@@ -3,14 +3,11 @@
 }
 
 .request-credit__wrapper {
-    width: 800px;
+    max-width: 800px;
+    padding: 0 16px;
 }
 
 .request-credit__title {
     width: 600px;
 }
 
-.request-credit__card {
-    background: linear-gradient(to right, rgb(170, 170, 170), rgb(35, 219, 173));
-    color: rgb(255, 255, 255);
-}

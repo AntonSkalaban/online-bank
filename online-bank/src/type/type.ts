@@ -1,4 +1,3 @@
-import { Currency } from "./defaultProducts";
 import { UserCard } from "./userProducts";
 
 export type FormValues = Record<string, string | number | boolean>;

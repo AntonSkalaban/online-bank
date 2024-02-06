@@ -14,3 +14,10 @@ export interface DefaultCard extends DefaultProduct {
   paymentSystem: PaymentSystem;
   isVirtual: boolean;
 }
+
+export interface DefaultCredit extends DefaultProduct {
+  img: string;
+  name: string;
+  rate: number;
+  maxSum: number;
+}

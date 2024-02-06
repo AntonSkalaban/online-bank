@@ -1,6 +1,7 @@
 import React from "react";
-import { GoBackBtn, SectionHeader, Typography, Wrapper } from "components/UI";
 import { RequirementsDropdown } from "./RequirementsDropdown/RequirementsDropdown";
+import { CreditsList } from "./CreditsList/CreditsList";
+import { GoBackBtn, SectionHeader, Typography, Wrapper } from "components/UI";
 import "./style.css";
 
 export const RequestCredit = () => {
@@ -22,7 +23,8 @@ export const RequestCredit = () => {
               </Typography>
             </div>
             <RequirementsDropdown />
-            <div className="request-credit__card"></div>
+
+            <CreditsList />
           </div>
         </div>
       </Wrapper>
